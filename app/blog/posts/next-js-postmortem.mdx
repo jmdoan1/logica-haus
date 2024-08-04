@@ -1,0 +1,98 @@
+---
+title: "Building my first next.js website (this one): a postmortem"
+publishedAt: "2024-08-02"
+summary: "An attempt at approaching a new web framework with minimal effort"
+---
+
+## Background:
+
+I taught myself how to build native iOS apps in the early months of 2015, when Swift was a brand new language. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. The final nail in the coffin came in the form of my biggest challenge being the music playback controls of my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift and Spotify.
+
+As such, I had to rely heavily on documentation and just figuring things out. Apple docs literally became my late night reading.
+
+What I didn't know at the time was that all of this was actually turning me into a "good" developer who could do things like...relying on documentation and figuring things out.
+
+However, the day finally came when I accidentally realized I "good" at programming and this developed...hubris. I started to believe that I had "done my time", and now all that was left was to do the crimes. This may remind you of a certain country that might believe it's already had it's revolution and doesn't need another one, even though that was 250 years ago.
+
+## The Problem
+
+Because I was an app developer who hadn't yet realized how transferrable a lot of my knowledge was to other tech stacks, I built my portfolio with Squarespace. There was nothing wrong with this and it was a good portfolio. It even landed me my first dev job after I linked it in my cover letter while applying for an accountant position at a software company that saw more value in my programming skills than I did.
+
+I have also been freelancing since 2016 and find most of my clients through Reddit. Recently, I got a comment on one of my r/forhire posts asking why a full stack developer has a portfolio "Powered by Squarespace". My response was simple and only had 2 points. 1. If it ain't broke don't fix it. 2. Most of my clients are simply individuals with an idea, some money, and limited technical knowledge, so there's no real need to impress them with a portfolio that can be analyzed on github. After all, if I'm going to write code, I'd rather be writing the code that's actively making my money.
+
+However, that comment sat around in my head for a while and I figured the time had finally come to build a portfolio project. I've been trying to catch bigger fish these days and it might be helpful. I've also gotten to know some other devs that I could potentially subcontract for larger projects, so a fresh website could look a little more agency-ish.
+
+## The Solution
+
+I decided to go with Next.js for a few reasons:
+
+- I've been telling potential clients I can do this, so I might as well make sure
+- It works via server-side-rendering, which I hadn't worked with yet, so it would be good to get more familiar with the concept
+- It's better for SEO
+- It's "essentially just react" so it should be easy, right?
+
+## How It Went
+
+_This would be a good time to clarify that the use of the term postmortem in the title is a joke, but I'm also writing this article as I build the project, so we'll see._
+
+Like any "good" developer, I ~~read the documentation~~ went straight to the get started page to find the CLI command to create a new project and figured I could just take it from there. On the installation page, I found the command:
+
+```bash
+npx create-next-app@latest
+```
+
+And answered the questions:
+
+```bash
+What is your project named? my-app
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? Yes
+Would you like to use `src/` directory? Yes
+Would you like to use App Router? (recommended) Yes
+Would you like to customize the default import alias (@/*)? Yes
+What import alias would you like configured? @
+```
+
+Great, I officially have a working Next.js website and the resume has been updated. Check and check.
+
+But wait, it actually looks like I've already made a mistake here. Hmmm...can you spot it? That's right! It was saying yes to Tailwind.
+
+Looking at `src/app/page.tsx`, I was immediately assaulted by the following:
+
+```html
+<div
+  className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]"
+>
+  ...
+</div>
+```
+
+Honestly, what the fuck is even this? This is the most disgusting thing I have ever seen. This is ONE LINE of code? Sod off, mate. If I saw this in a code review, my eyes would immediately skip to the next line because it lgtm, and I highly doubt I'm alone here. The next time I hear someone say that inline styling in React is messy and makes the code unreadable, I'm going to stick my finger down my throat and vomit this line of code all over their shoes.
+
+It's also apparent that there's some Tailwind-specific fuckery going on here, which means I'll need to read some docs, so no thanks. I'd rather spend my time getting better at actual CSS.
+
+So, let's delete this project and rerun rhat CLI command with some new answers. But first, I actually stumbled upon [Portfolio Starter Kit](https://vercel.com/templates/next.js/portfolio-starter-kit "Portfolio Starter Kit") in the templates section that offers the following:
+
+- **MDX and Markdown support**: Cool!
+- **Optimized for SEO (sitemap, robots, JSON-LD schema)**: Awesome! That's exactly why we're here in the first place. And robots? The future is now!
+- **RSS Feed**: Neat!
+- **Dynamic OG images:** I don't know what that means, but keeping it OG is always a W move!
+- **Syntax highlighting**: Fancy!
+- **Tailwind v4**: Uh Oh
+- **Vercel Speed Insights / Web Analytics**: I dunno, seeing how many people visit my site sounds depressing
+- **Geist font**: So hot right now!
+
+Sounds like this should save me a bunch of time (except for having to copy/paste a new CLI command, ugh). Let's get started and run this project.
+
+I was immediately hit with an error about the React version not being high enough (which, oddly enough, I couldn't replicate to provide the exact error here). Easy enough fix, I can just update the React version, but what if this causes version conflicts with other packages? And what if resolving those other version conflicts breaks the example code? Then I'll have to start googling things? Sounds like a lot of work.
+
+Let's just scrap this entirely and go back to the regular create-next-app command and maybe I can look at the template code to integrate what it's doing with SEO. Cool, we're back at square one. Sure, some time was wasted, but not as much time as reading a doc, right?
+
+The next step here was to open youtube and see that [@t3dotgg](https://www.youtube.com/@t3dotgg "t3dotgg") just posted [a new video about something called server islands by astro](https://www.youtube.com/watch?v=uBxehYwQox4 "a new video about something called server islands by astro") that, according to the thumbnail, will eliminate ssr, ppr, spa, and isr (I know what 2 of these things mean, server-side rendering and single page application, while Theo's video tells me ppr means partial prerendering, and google tells me isr means infant swimming resource). Welp, fuck me I guess. I do plan on having at least 2 client-side components on this website and this might affect the performance of those components. ...this sounds like a problem for another day, and the jury is hereby directed to disregard this paragraph, as it is inadmissable.
+
+You know what? I just thought of a quick way to check if I can get around that react error in the template without having to go through all those potential steps I mentioned. Let's create it again, delete all the dependencies, then run a single command to just re-add them all and see if it runs.
+
+The only issue I faced here was with the 2 Tailwind-related packes. Who could've guessed. What a package. 10 stars all around. I manually reset these versions, reinstalled, ran the project, and we're good to go!
+
+At this point, as I now had a working website with a blog, I figured it was time to start writing this article, and here we are. I'm already worried this article will have major issues with verb tense consistency, so hopefully you can understand that this is just a race condition, as the project and the writing are operating concurrently.
