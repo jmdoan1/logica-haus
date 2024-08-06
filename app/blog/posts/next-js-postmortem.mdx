@@ -1,22 +1,22 @@
 ---
-title: "Building my first next.js website (this one): a postmortem"
+title: "Building My First Next.js Website (this one): a Postmortem"
 publishedAt: "2024-08-02"
 summary: "An attempt at approaching a new web framework with minimal effort"
 ---
 
 ## Background:
 
-I taught myself how to build native iOS apps in the early months of 2015, when Swift was a brand new language. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. The final nail in the coffin came in the form of my biggest challenge being the music playback controls of my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift and Spotify.
+I taught myself how to build native iOS apps in the early months of 2015, when Swift 1.0 had only just been released. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. And for the final nail in the coffin, my biggest challenge at the time was adding music playback controls to my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift and Spotify.
 
 As such, I had to rely heavily on documentation and just figuring things out. Apple docs literally became my late night reading.
 
-What I didn't know at the time was that all of this was actually turning me into a "good" developer who could do things like...relying on documentation and figuring things out.
+What I didn't know at the time was that all of this was actually turning me into a "good" developer who could do things like...rely on documentation and figure things out.
 
 However, the day finally came when I accidentally realized I "good" at programming and this developed...hubris. I started to believe that I had "done my time", and now all that was left was to do the crimes. This may remind you of a certain country that might believe it's already had it's revolution and doesn't need another one, even though that was 250 years ago.
 
 ## The Problem
 
-Because I was an app developer who hadn't yet realized how transferrable a lot of my knowledge was to other tech stacks, I built my portfolio with Squarespace. There was nothing wrong with this and it was a good portfolio. It even landed me my first dev job after I linked it in my cover letter while applying for an accountant position at a software company that saw more value in my programming skills than I did.
+Because I was an app developer who hadn't yet realized how transferrable a lot of my knowledge was to other tech stacks, I built my portfolio with Squarespace. There was nothing wrong with this and it was a good portfolio. It even landed me my first dev job after I linked it in my cover letter while applying for an accountant position at a software company that ended up seeing more value in my programming skills than I did.
 
 I have also been freelancing since 2016 and find most of my clients through Reddit. Recently, I got a comment on one of my r/forhire posts asking why a full stack developer has a portfolio "Powered by Squarespace". My response was simple and only had 2 points. 1. If it ain't broke don't fix it. 2. Most of my clients are simply individuals with an idea, some money, and limited technical knowledge, so there's no real need to impress them with a portfolio that can be analyzed on github. After all, if I'm going to write code, I'd rather be writing the code that's actively making my money.
 
@@ -24,12 +24,12 @@ However, that comment sat around in my head for a while and I figured the time h
 
 ## The Solution
 
-I decided to go with Next.js for a few reasons:
+After making a react app and making a single component, I decided to restart with Next.js for a few reasons:
 
 - I've been telling potential clients I can do this, so I might as well make sure
-- It works via server-side-rendering, which I hadn't worked with yet, so it would be good to get more familiar with the concept
-- It's better for SEO
-- It's "essentially just react" so it should be easy, right?
+- It works via server-side rendering, which I hadn't worked with yet, so it would be good to get more familiar with the concept
+- It's "essentially just React", and I've been using that for 6 years, so it should be easy, right?
+- It's apparently better for SEO when compared to React
 
 ## How It Went
 
@@ -54,7 +54,7 @@ Would you like to customize the default import alias (@/*)? Yes
 What import alias would you like configured? @
 ```
 
-Great, I officially have a working Next.js website and the resume has been updated. Check and check.
+Great, I officially have a working Next.js website and the resume has been reformatted to allow room for another bullet point on the skills list. Check and check.
 
 But wait, it actually looks like I've already made a mistake here. Hmmm...can you spot it? That's right! It was saying yes to Tailwind.
 
@@ -68,31 +68,139 @@ Looking at `src/app/page.tsx`, I was immediately assaulted by the following:
 </div>
 ```
 
-Honestly, what the fuck is even this? This is the most disgusting thing I have ever seen. This is ONE LINE of code? Sod off, mate. If I saw this in a code review, my eyes would immediately skip to the next line because it lgtm, and I highly doubt I'm alone here. The next time I hear someone say that inline styling in React is messy and makes the code unreadable, I'm going to stick my finger down my throat and vomit this line of code all over their shoes.
+Honestly, what the fuck is even this? This is the most disgusting thing I have ever seen. This is ONE LINE of code? Sod off, mate. If I saw this in a code review, my eyes would immediately skip to the next line because it lgtm, and I highly doubt I'm alone here. The next time I hear someone say that inline styling is messy and makes the code unreadable, I'm going to stick my finger down my throat and vomit this line of code all over their shoes.
 
 It's also apparent that there's some Tailwind-specific fuckery going on here, which means I'll need to read some docs, so no thanks. I'd rather spend my time getting better at actual CSS.
 
 So, let's delete this project and rerun rhat CLI command with some new answers. But first, I actually stumbled upon [Portfolio Starter Kit](https://vercel.com/templates/next.js/portfolio-starter-kit "Portfolio Starter Kit") in the templates section that offers the following:
 
-- **MDX and Markdown support**: Cool!
-- **Optimized for SEO (sitemap, robots, JSON-LD schema)**: Awesome! That's exactly why we're here in the first place. And robots? The future is now!
-- **RSS Feed**: Neat!
-- **Dynamic OG images:** I don't know what that means, but keeping it OG is always a W move!
-- **Syntax highlighting**: Fancy!
-- **Tailwind v4**: Uh Oh
-- **Vercel Speed Insights / Web Analytics**: I dunno, seeing how many people visit my site sounds depressing
-- **Geist font**: So hot right now!
+- <ins>**MDX and Markdown support**</ins>: Cool!
+- <ins>**Optimized for SEO (sitemap, robots, JSON-LD schema)**</ins>: Awesome!
+  That's exactly why we're here in the first place. And robots? The future is
+  now!
+- <ins>**RSS Feed**</ins>: Neat!
+- <ins>**Dynamic OG images**</ins>: I don't know what this means, but I always
+  keep it OG, so this is a clear win.
+- <ins>**Syntax highlighting**</ins>: Fancy!
+- <ins>**Tailwind v4**</ins>: Uh Oh.
+- <ins>**Vercel Speed Insights / Web Analytics**</ins>: I dunno, seeing how many
+  people actually visit my website sounds depressing.
+- <ins>**Geist font**</ins>: So hot right now!
 
-Sounds like this should save me a bunch of time (except for having to copy/paste a new CLI command, ugh). Let's get started and run this project.
+Sounds like this should save me a bunch of time (except for having to copy/paste a new CLI command). Let's get started and run this project.
 
 I was immediately hit with an error about the React version not being high enough (which, oddly enough, I couldn't replicate to provide the exact error here). Easy enough fix, I can just update the React version, but what if this causes version conflicts with other packages? And what if resolving those other version conflicts breaks the example code? Then I'll have to start googling things? Sounds like a lot of work.
 
 Let's just scrap this entirely and go back to the regular create-next-app command and maybe I can look at the template code to integrate what it's doing with SEO. Cool, we're back at square one. Sure, some time was wasted, but not as much time as reading a doc, right?
 
-The next step here was to open youtube and see that [@t3dotgg](https://www.youtube.com/@t3dotgg "t3dotgg") just posted [a new video about something called server islands by astro](https://www.youtube.com/watch?v=uBxehYwQox4 "a new video about something called server islands by astro") that, according to the thumbnail, will eliminate ssr, ppr, spa, and isr (I know what 2 of these things mean, server-side rendering and single page application, while Theo's video tells me ppr means partial prerendering, and google tells me isr means infant swimming resource). Welp, fuck me I guess. I do plan on having at least 2 client-side components on this website and this might affect the performance of those components. ...this sounds like a problem for another day, and the jury is hereby directed to disregard this paragraph, as it is inadmissable.
+The next step here was to open youtube and see that [@t3dotgg](https://www.youtube.com/@t3dotgg "t3dotgg") just posted [a new video about something called server islands by astro](https://www.youtube.com/watch?v=uBxehYwQox4 "a new video about something called server islands by astro") that, according to the thumbnail, will eliminate ssr, ppr, spa, and isr (I know what 2 of these things mean, server-side rendering and single page application, while Theo's video tells me ppr means partial prerendering, and google tells me isr means infant swimming resource). Welp, fuck me I guess. I do plan on having at least 2 client-side components on this website and this might affect the performance of those components. ...this sounds like a problem for another day, and the jury is hereby instructed to disregard this paragraph, as it is inadmissable.
 
 You know what? I just thought of a quick way to check if I can get around that react error in the template without having to go through all those potential steps I mentioned. Let's create it again, delete all the dependencies, then run a single command to just re-add them all and see if it runs.
 
 The only issue I faced here was with the 2 Tailwind-related packes. Who could've guessed. What a package. 10 stars all around. I manually reset these versions, reinstalled, ran the project, and we're good to go!
 
 At this point, as I now had a working website with a blog, I figured it was time to start writing this article, and here we are. I'm already worried this article will have major issues with verb tense consistency, so hopefully you can understand that this is just a race condition, as the project and the writing are operating concurrently.
+
+So now we have a website that looks like this:
+
+![Initial Home Page](../assets/InitialHomePage.png)
+
+Whoops, it loks like I'm having trouble getting this image to display here. I had added the image to a new assets folder within the existing blog folder and tried
+
+```mdx
+![Initial Home Page](../assets/InitialHomePage.png)
+```
+
+but nope. I thought this was how markdown worked? I've been a Redditor™ since before I was a dev, I should know this.
+
+```mdx
+![](app/blog/assets/InitialHomePage.png)
+```
+
+nope
+
+I think I saw that .mdx files are markdown files that supports components?
+
+```mdx
+<img src="app/blog/assets/InitialHomePage.png" />
+```
+
+nope
+
+```mdx
+<Image src="/../assets/InitialHomePage.png" ... />
+```
+
+nope
+
+I turned to Chat-GPT and got some nonsense that didn't work. Then some googling told me I should put the image in the public folder. Duh. This is something I kind of knew but I'm used to React and Expo doing this for me during the build process. If this template had included a public folder, it would have been fairly obvious from the start. So much for OG images (I still don't know what this means). I created a public folder and moved the image to `public/assets/blog/nextjs/InitialHomePageFull.png` and tried
+
+```mdx
+![Initial Home Page](/assets/blog/nextjs/InitialHomePage.png)
+```
+
+We did it!
+
+So now we have a website that looks like this:
+
+<div class="mdx-image-container">
+  <img
+    src="/assets/blog/nextjs/InitialHomePage.png"
+    alt="Initial Home Page"
+    class="bordered-image"
+  />
+</div>
+
+Unfortunately, a screenshot of nothing but Geist font kind of blended into a blog post full of Geist font, so I decided to test out the components-in-css theory with some css
+
+```CSS
+.bordered-image {
+  border: 2px solid;
+}
+```
+
+and then tried adding that img component again
+
+```mdx
+<img
+  src="/assets/blog/nextjs/InitialHomePage.png"
+  alt="Initial Home Page"
+  class="bordered-image"
+/>
+```
+
+Cool beans, m'queens. \*tips fedora and rides off into the sunset in full sigma fashion\*
+
+So, the first thing I don't like about this home page is the wrapping text on the date for this article. It's kinda gross. I also obviously have to replace all this default content from the template. Not only is it not my content, but I'm not about to enter a one-man circle-jerk about vim \*cough\* Primeagen \*cough\*. While I do prefer tabs over spaces, it's only because I can tab 4x faster than I can space space space space, but if it looks the same and the machine reads it the same, I don't really care about you preference. Type safety is cool though, maybe I'll steal that post.
+
+Another thing I don't like is how it looks on a full page.
+
+<div class="mdx-image-container">
+  <img
+    src="/assets/blog/nextjs/InitialHomePageFull.png"
+    alt="Initial Full Home Page"
+    class="bordered-image"
+  />
+</div>
+
+This is way too small, so I did some hunting and found the offending code hiding out in `app/layout.tsx`
+
+```tsx
+<body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">...</body>
+```
+
+Luckily, the one part I can immediately understand here is the one that mattered, `max-w-xl`. Let's try changing that to `xxl`? Well now it just fills the entire page with no margin, which means either xxl doesn't exist or Tailwind has made some really weird scaling decisions. I kinda wanna see if Tailwind is smart so I do some quick testing with `max-w-800` and `max-w-800px` with no result. So let's just remove that and do some actual CSS.
+
+```CSS
+html {
+  min-width: 360px;
+  padding: 0 2rem;
+}
+
+body {
+  max-width: 1280px;
+  align-self: center;
+}
+```
+
+Great, now everything visually works how I want it to. \*finger guns\*

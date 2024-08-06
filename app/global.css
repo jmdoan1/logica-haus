@@ -29,10 +29,6 @@
   }
 }
 
-html {
-  min-width: 360px;
-}
-
 .prose .anchor {
   @apply absolute invisible no-underline;
 
@@ -151,4 +147,24 @@ table {
 
 code {
   white-space: pre-wrap !important;
+}
+
+.mdx-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bordered-image {
+  border: 2px solid;
+}
+
+html {
+  min-width: 360px;
+  padding: 0 2rem;
+}
+
+body {
+  max-width: 1280px;
+  align-self: center;
 }
