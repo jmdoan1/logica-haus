@@ -145,20 +145,6 @@ table {
   text-wrap: balance;
 }
 
-code {
-  white-space: pre-wrap !important;
-}
-
-.mdx-image-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.bordered-image {
-  border: 2px solid;
-}
-
 html {
   min-width: 360px;
   padding: 0 2rem;

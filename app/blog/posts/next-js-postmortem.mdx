@@ -1,24 +1,28 @@
 ---
 title: "Building My First Next.js Website (this one): a Postmortem"
-publishedAt: "2024-08-02"
+publishedAt: "2024-08-06"
 summary: "An attempt at approaching a new web framework with minimal effort"
 ---
 
 ## Background:
 
-I taught myself how to build native iOS apps in the early months of 2015, when Swift 1.0 had only just been released. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. And for the final nail in the coffin, my biggest challenge at the time was adding music playback controls to my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift and Spotify.
+I taught myself how to build native iOS apps in the early months of 2015, when Swift 1.0 had only just been released. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. To make things even worse, my biggest challenge at the time was adding music playback controls to my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift and Spotify.
 
 As such, I had to rely heavily on documentation and just figuring things out. Apple docs literally became my late night reading.
 
 What I didn't know at the time was that all of this was actually turning me into a "good" developer who could do things like...rely on documentation and figure things out.
 
-However, the day finally came when I accidentally realized I "good" at programming and this developed...hubris. I started to believe that I had "done my time", and now all that was left was to do the crimes. This may remind you of a certain country that might believe it's already had it's revolution and doesn't need another one, even though that was 250 years ago.
+However, the day finally came when I accidentally realized I was "good" at programming and this developed...hubris. I started to believe that I had "done my time", and now all that was left was to do the crimes. This may remind you of a certain country that might believe it's already had it's revolution and doesn't need another one, even though that was 250 years ago.
 
 ## The Problem
 
 Because I was an app developer who hadn't yet realized how transferrable a lot of my knowledge was to other tech stacks, I built my portfolio with Squarespace. There was nothing wrong with this and it was a good portfolio. It even landed me my first dev job after I linked it in my cover letter while applying for an accountant position at a software company that ended up seeing more value in my programming skills than I did.
 
-I have also been freelancing since 2016 and find most of my clients through Reddit. Recently, I got a comment on one of my r/forhire posts asking why a full stack developer has a portfolio "Powered by Squarespace". My response was simple and only had 2 points. 1. If it ain't broke don't fix it. 2. Most of my clients are simply individuals with an idea, some money, and limited technical knowledge, so there's no real need to impress them with a portfolio that can be analyzed on github. After all, if I'm going to write code, I'd rather be writing the code that's actively making my money.
+I have also been freelancing since 2016 and find most of my clients through Reddit. Recently, I got a comment on one of my r/forhire posts asking why a full stack developer has a portfolio "Powered by Squarespace". My response was simple and only had 3 points.
+
+1. If it ain't broke don't fix it.
+2. Most of my clients are simply individuals with an idea, some money, and limited technical knowledge, so there's no real need to impress them with a portfolio that can be analyzed on github.
+3. If I'm going to write code, I'd rather be writing the code that's actively making my money.
 
 However, that comment sat around in my head for a while and I figured the time had finally come to build a portfolio project. I've been trying to catch bigger fish these days and it might be helpful. I've also gotten to know some other devs that I could potentially subcontract for larger projects, so a fresh website could look a little more agency-ish.
 
@@ -54,7 +58,7 @@ Would you like to customize the default import alias (@/*)? Yes
 What import alias would you like configured? @
 ```
 
-Great, I officially have a working Next.js website and the resume has been reformatted to allow room for another bullet point on the skills list. Check and check.
+Great, I officially have a working Next.js website and the résumé has been reformatted to allow room for another bullet point on the skills list. Check and check.
 
 But wait, it actually looks like I've already made a mistake here. Hmmm...can you spot it? That's right! It was saying yes to Tailwind.
 
@@ -72,7 +76,7 @@ Honestly, what the fuck is even this? This is the most disgusting thing I have e
 
 It's also apparent that there's some Tailwind-specific fuckery going on here, which means I'll need to read some docs, so no thanks. I'd rather spend my time getting better at actual CSS.
 
-So, let's delete this project and rerun rhat CLI command with some new answers. But first, I actually stumbled upon [Portfolio Starter Kit](https://vercel.com/templates/next.js/portfolio-starter-kit "Portfolio Starter Kit") in the templates section that offers the following:
+So, let's delete this project and rerun rhat CLI command with some new answers. But first, I actually stumbled upon this [Portfolio Starter Kit](https://vercel.com/templates/next.js/portfolio-starter-kit "Portfolio Starter Kit") in the templates section that offers the following:
 
 - <ins>**MDX and Markdown support**</ins>: Cool!
 - <ins>**Optimized for SEO (sitemap, robots, JSON-LD schema)**</ins>: Awesome!
@@ -139,15 +143,13 @@ I turned to Chat-GPT and got some nonsense that didn't work. Then some googling 
 ![Initial Home Page](/assets/blog/nextjs/InitialHomePage.png)
 ```
 
-We did it!
+We did it! So now we have a website that looks like this:
 
-So now we have a website that looks like this:
-
-<div class="mdx-image-container">
+<div className="mdx-image-container">
   <img
     src="/assets/blog/nextjs/InitialHomePage.png"
     alt="Initial Home Page"
-    class="bordered-image"
+    className="bordered-image"
   />
 </div>
 
@@ -165,7 +167,7 @@ and then tried adding that img component again
 <img
   src="/assets/blog/nextjs/InitialHomePage.png"
   alt="Initial Home Page"
-  class="bordered-image"
+  className="bordered-image"
 />
 ```
 
@@ -175,11 +177,11 @@ So, the first thing I don't like about this home page is the wrapping text on th
 
 Another thing I don't like is how it looks on a full page.
 
-<div class="mdx-image-container">
+<div className="mdx-image-container">
   <img
     src="/assets/blog/nextjs/InitialHomePageFull.png"
     alt="Initial Full Home Page"
-    class="bordered-image"
+    className="bordered-image"
   />
 </div>
 
@@ -203,4 +205,42 @@ body {
 }
 ```
 
-Great, now everything visually works how I want it to. \*finger guns\*
+Great, now everything visually works how I want it to. \*finger guns\* \*click\* oops, no ammo. That's right, we still have to fix that wrapping date text. Let's take a look at the existing code.
+
+```tsx
+{
+  allBlogs.map((post) => (
+    <Link
+      key={post.slug}
+      className="flex flex-col space-y-1 mb-4"
+      href={`/blog/${post.slug}`}
+    >
+      <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
+        <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+          {formatDate(post.metadata.publishedAt, false)}
+        </p>
+        <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+          {post.metadata.title}
+        </p>
+      </div>
+    </Link>
+  ));
+}
+```
+
+The quickest and easiest solution here that still looks good is to change `w-[100px]` to `w-[115px]` in the first \<p> component and make sure not to write any articles on future dates that might require more characters. And with that, the finger guns are fully loaded and we have a website that looks like this:
+
+<div className="mdx-image-container">
+  <img
+    src="/assets/blog/nextjs/InitialHomePageFixed.png"
+    alt="Initial Home Page - Fixed"
+    className="bordered-image"
+  />
+</div>
+
+# 4 l8er
+
+<img
+  src="https://vectorified.com/images/broken-image-icon-22.png"
+  width="150"
+/>

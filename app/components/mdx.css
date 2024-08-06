@@ -1,0 +1,13 @@
+.mdx-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bordered-image {
+  border: 2px solid;
+}
+
+code {
+  white-space: pre-wrap !important;
+}
