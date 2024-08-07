@@ -4,9 +4,9 @@ publishedAt: "2024-08-06"
 summary: "An attempt at approaching a new web framework with minimal effort"
 ---
 
-## Background:
+<h2 style={{ fontWeight: "bold" }}>Background</h2>
 
-I taught myself how to build native iOS apps in the early months of 2015, when Swift 1.0 had only just been released. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. To make things even worse, my biggest challenge at the time was adding music playback controls to my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift and Spotify.
+I taught myself how to build native iOS apps in the early months of 2015, when Swift 1.0 had only recently been released. It was tough. When I chose Swift, I had no idea how tall the mountain I'd chosen to climb actually was, as the peak was hidden beyond clouds of hope and naivety. Apparently, new languages come with small online communities, and not a lot of people on StackOverflow are giving detailed enough answers for someone with no knowledge of the underlying programming concepts to understand. Swift was also getting frequent updates, so even comprehensive answers came with bugs I couldn't fix if they were more than a few months old. I also knew 0 people with any semblance of programming knowledge who I could turn to for help. At the time, I was an accountant for a biotech company and the sad reality of adulthood meant all my friends were accountants and scientists. To make things even worse, my biggest challenge at the time was adding music playback controls to my first app, making the majority of my google searches return articles about the ongoing drama surrounding Taylor Swift removing her content from Spotify.
 
 As such, I had to rely heavily on documentation and just figuring things out. Apple docs literally became my late night reading.
 
@@ -14,28 +14,28 @@ What I didn't know at the time was that all of this was actually turning me into
 
 However, the day finally came when I accidentally realized I was "good" at programming and this developed...hubris. I started to believe that I had "done my time", and now all that was left was to do the crimes. This may remind you of a certain country that might believe it's already had it's revolution and doesn't need another one, even though that was 250 years ago.
 
-## The Problem
+<h2 style={{ fontWeight: "bold" }}>The Problem</h2>
 
 Because I was an app developer who hadn't yet realized how transferrable a lot of my knowledge was to other tech stacks, I built my portfolio with Squarespace. There was nothing wrong with this and it was a good portfolio. It even landed me my first dev job after I linked it in my cover letter while applying for an accountant position at a software company that ended up seeing more value in my programming skills than I did.
 
-I have also been freelancing since 2016 and find most of my clients through Reddit. Recently, I got a comment on one of my r/forhire posts asking why a full stack developer has a portfolio "Powered by Squarespace". My response was simple and only had 3 points.
+Before switching careers entirely, I began freelancing since 2016, and still do. I find most of my clients through Reddit, and one of my recent r/forhire posts got a comment asking why a full stack developer has a portfolio "Powered by Squarespace". My response was simple and only had 3 points.
 
 1. If it ain't broke don't fix it.
 2. Most of my clients are simply individuals with an idea, some money, and limited technical knowledge, so there's no real need to impress them with a portfolio that can be analyzed on github.
-3. If I'm going to write code, I'd rather be writing the code that's actively making my money.
+3. If I'm going to write code, I'd rather be writing the code that's actively making me money.
 
 However, that comment sat around in my head for a while and I figured the time had finally come to build a portfolio project. I've been trying to catch bigger fish these days and it might be helpful. I've also gotten to know some other devs that I could potentially subcontract for larger projects, so a fresh website could look a little more agency-ish.
 
-## The Solution
+<h2 style={{ fontWeight: "bold" }}>The Solution</h2>
 
-After making a react app and making a single component, I decided to restart with Next.js for a few reasons:
+After making a react app and building a single component, I decided to restart with Next.js for a few reasons:
 
 - I've been telling potential clients I can do this, so I might as well make sure
 - It works via server-side rendering, which I hadn't worked with yet, so it would be good to get more familiar with the concept
 - It's "essentially just React", and I've been using that for 6 years, so it should be easy, right?
 - It's apparently better for SEO when compared to React
 
-## How It Went
+<h2 style={{ fontWeight: "bold" }}>How It Went</h2>
 
 _This would be a good time to clarify that the use of the term postmortem in the title is a joke, but I'm also writing this article as I build the project, so we'll see._
 
@@ -62,7 +62,7 @@ Great, I officially have a working Next.js website and the résumé has been ref
 
 But wait, it actually looks like I've already made a mistake here. Hmmm...can you spot it? That's right! It was saying yes to Tailwind.
 
-Looking at `src/app/page.tsx`, I was immediately assaulted by the following:
+Looking at `src/app/page.tsx`, I was immediately assaulted with the following:
 
 ```html
 <div
@@ -137,7 +137,7 @@ nope
 
 nope
 
-I turned to Chat-GPT and got some nonsense that didn't work. Then some googling told me I should put the image in the public folder. Duh. This is something I kind of knew but I'm used to React and Expo doing this for me during the build process. If this template had included a public folder, it would have been fairly obvious from the start. So much for OG images (I still don't know what this means). I created a public folder and moved the image to `public/assets/blog/nextjs/InitialHomePageFull.png` and tried
+I turned to Chat-GPT and got some nonsense that didn't work. Then some googling told me I should put the image in the public folder. Duh. This is something I kind of knew but I'm used to React and Expo doing this for me during the build process. If this template had included a public folder, it would have been fairly obvious from the start. So much for OG images (I still don't know what this means). I created a public folder and moved the image to `public/assets/blog/nextjs/InitialHomePage.png` and tried
 
 ```mdx
 ![Initial Home Page](/assets/blog/nextjs/InitialHomePage.png)
@@ -153,11 +153,11 @@ We did it! So now we have a website that looks like this:
   />
 </div>
 
-Unfortunately, a screenshot of nothing but Geist font kind of blended into a blog post full of Geist font, so I decided to test out the components-in-css theory with some css
+Unfortunately, a screenshot of nothing but Geist font kind of blended into a blog post full of Geist font, so I decided to test out the components-in-mdx "theory" with some css
 
 ```CSS
 .bordered-image {
-  border: 2px solid;
+  border: 1px solid;
 }
 ```
 
@@ -228,7 +228,17 @@ Great, now everything visually works how I want it to. \*finger guns\* \*click\*
 }
 ```
 
-The quickest and easiest solution here that still looks good is to change `w-[100px]` to `w-[115px]` in the first \<p> component and make sure not to write any articles on future dates that might require more characters. And with that, the finger guns are fully loaded and we have a website that looks like this:
+The quickest and easiest solution here that still looks good is to change `w-[100px]` to `w-[115px]` in the first \<p> component and make sure not to write any articles on future dates that might require more characters. But then I noticed the `formatDate` function has the following localization logic:
+
+```TypeScript
+let fullDate = targetDate.toLocaleString("en-us", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+```
+
+So I changed `month: "long"` to `month: "short"`. And with that, the finger guns are fully loaded and we have a future-proof website layout that looks like this:
 
 <div className="mdx-image-container">
   <img
@@ -238,7 +248,129 @@ The quickest and easiest solution here that still looks good is to change `w-[10
   />
 </div>
 
-# 4 l8er
+So now we need to actually turn this into a portfolio. Instead of using the current home page, I want to create a new "projects" page and eventually turn the home page into a landing page (because I'm an agency now). The first step here will be to figure out how the template is managing the header, slugs, and routing.
+
+I notice the nav bar has the pollowing:
+
+```TypeScript
+const navItems = {
+  '/': {
+    name: 'home',
+  },
+  '/blog': {
+    name: 'blog',
+  },
+  'https://vercel.com/templates/next.js/portfolio-starter-kit': {
+    name: 'deploy',
+  },
+}
+```
+
+and the project has a file structure like this:
+
+```
+project-root/
+├── app/
+│ ├── blog/
+│ │   └── page.tsx
+│ └── page.tsx
+```
+
+So it looks like I can just create a new `/app/projects/page.tsx` file and add a `'projects': { name: 'projects' }` record to the `navItems` and a quick test confirms this to be true. Yay, programming is easy! Please ignore the fact that I didn't actually "figure out how the template is managing the header, slugs, and routing" and instead just figured out how to manipulate the end result. Was the under-the-hood magic here provided by the template? Or is this boiled into Next.js? Who cares! I did the thing I had to do and the most efficient thing to do now is do the next thing I have to do.
+
+The next thing I have to do is scaffold out a grid of labeled images that link to dynamic urls. Right now, my test code looks like this:
+
+```tsx
+// app/components/portfolio-grid.tsx
+export default function PortfolioGrid() {
+  return <section>hello</section>;
+}
+```
+
+```tsx
+// app/projects/page.tsx
+import PortfolioGrid from "app/components/portfolio-grid";
+
+export default function Page() {
+  return <PortfolioGrid />;
+}
+```
+
+and a page that looks like this:
+
+<div className="mdx-image-container">
+  <img
+    src="/assets/blog/nextjs/PortfolioTest.png"
+    alt="Test Portfolio"
+    className="bordered-image"
+  />
+</div>
+
+And after some quick scaffolding, we have some code that looks like this
+
+```css
+// app/components/portfolio-grid.css
+.grid {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr [col-start]);
+}
+
+@media (min-width: 750px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr [col-start]);
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr [col-start]);
+  }
+}
+```
+
+```tsx
+// app/components/portfolio-grid.tsx
+import "./portfolio-grid.css";
+
+export default function PortfolioGrid() {
+  return (
+    <section>
+      <div className="grid">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((x) => (
+          <div key={x}>
+            <img
+              // picsum.photos is a handy service called "lorem picsum", a lorem ipsum resource for images
+              // '/300` pulls in a 300x300 image
+              // '?random=${x}' ensures it calls a new image each time instead of the same cached image
+              src={`https://picsum.photos/300?random=${x}`}
+              alt={x.toString()}
+            />
+            <div>
+              <p>Project {x}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+```
+
+and a portfolio page that looks like this:
+
+<div className="mdx-image-container">
+  <img
+    src="/assets/blog/nextjs/PortfolioGridScaffold.gif"
+    alt="Portfolio Grid Scaffold"
+    className="bordered-image"
+  />
+</div>
+
+Now for the part I've been dreading the most...manually copying over the images and content from SquareSpace...just a big, fat, juicy chunk of time-consuming non-work. Sounds a lot like my entire accounting career smh.
+
+# 4 L8ER
 
 <img
   src="https://vectorified.com/images/broken-image-icon-22.png"
