@@ -1,0 +1,47 @@
+.button-one {
+  padding: 1em 2em;
+  background-color: #6495ed;
+  border: 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 10px;
+  transition: transform 1000ms; /* animation speed */
+}
+
+.button-one:hover,
+.button-one:focus-visible {
+  transform: translateY(-1.75rem); /* animation action */
+  transition: transform 250ms; /* animation speed while hovering */
+}
+
+.party-time {
+  width: 300px;
+  height: 150px;
+  margin: 10px;
+  animation: party 1000ms infinite;
+}
+
+@keyframes party {
+  0% {
+    background-color: red;
+  }
+  15% {
+    background-color: orange;
+  }
+  30% {
+    background-color: yellow;
+  }
+  45% {
+    background-color: green;
+  }
+  60% {
+    background-color: blue;
+  }
+  75% {
+    background-color: indigo;
+  }
+  90% {
+    background-color: violet;
+  }
+}

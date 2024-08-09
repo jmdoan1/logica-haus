@@ -1,0 +1,59 @@
+---
+title: "CSS Animation Tricks"
+publishedAt: "2024-08-06"
+summary: "Just some stuff for me to remember"
+---
+
+https://www.youtube.com/watch?v=y8-F5-2EIcg
+
+```css
+.button-one {
+    padding: 1em 2em;
+    background-color: #6495ed;
+    border: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: transform 1000ms; /_ animation speed _/
+}
+
+.button-one:hover,
+.button-one:focus-visible {
+    transform: translateY(-1.75rem); /_ animation action _/
+    transition: transform 250ms; /_ animation speed while hovering _/
+}
+```
+
+<div className="button-one">Button</div>
+
+```css
+.party-time {
+  animation: party 2000ms infinite;
+}
+
+@keyframes party {
+  0% {
+    background-color: red;
+  }
+  15% {
+    background-color: orange;
+  }
+  30% {
+    background-color: yellow;
+  }
+  45% {
+    background-color: green;
+  }
+  60% {
+    background-color: blue;
+  }
+  75% {
+    background-color: indigo;
+  }
+  90% {
+    background-color: violet;
+  }
+}
+```
+
+<div className="party-time" />

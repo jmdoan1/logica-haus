@@ -6,8 +6,35 @@
 }
 
 .item {
-  border-radius: 10px;
+  /* width: 300px; */
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   overflow: hidden;
+  background-color: #aaa;
+  transition: border-radius 500ms ease;
+}
+
+.item:hover {
+  border-radius: 10px;
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #eeeeee;
+  object-fit: cover;
+  transition: scale 500ms ease-in;
+  box-shadow: inset 5px -5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.item:hover > img {
+  scale: 1.75;
+}
+
+.item p {
+  text-align: center;
+  font-weight: bold;
 }
 
 @media (min-width: 500px) {
