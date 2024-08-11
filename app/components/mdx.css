@@ -8,6 +8,10 @@
   border: 1px solid;
 }
 
+.max-width-image {
+  max-width: 500px;
+}
+
 code {
   white-space: pre-wrap !important;
 }

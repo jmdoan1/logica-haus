@@ -12,8 +12,8 @@
   --circumference: calc(var(--radius) * pi * 2);
   --dash: calc((var(--progress) * var(--circumference)) / 100);
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 13px;
+  right: 10px;
   z-index: 50;
 }
 
@@ -41,7 +41,18 @@
 .progress-text {
   fill: #5394fd;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 900;
+}
+
+@media (max-width: 1400px) {
+  .circular-progress {
+    --size: 25px;
+    top: 23.5px;
+    right: -5px;
+  }
+  .progress-text {
+    display: none;
+  }
 }
 
 @property --progress {
