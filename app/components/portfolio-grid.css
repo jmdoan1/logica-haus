@@ -8,21 +8,24 @@
 .item {
   /* width: 300px; */
   width: 100%;
+  border-radius: 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   overflow: hidden;
-  background-color: #aaa;
-  transition: border-radius 500ms ease;
+  /* background-color: #aaa; */
+  box-shadow: -5px 5px 10px 0px rgba(255, 255, 255, 0.45);
+  transition: border-radius 500ms ease-in;
+  position: relative;
 }
 
 .item:hover {
-  border-radius: 10px;
+  border-radius: 50%;
 }
 
 .item img {
   width: 100%;
   aspect-ratio: 1;
-  background-color: #eeeeee;
+  background-color: #efefef;
   object-fit: cover;
   transition: scale 500ms ease-in;
   box-shadow: inset 5px -5px 10px 0px rgba(0, 0, 0, 0.75);
@@ -35,6 +38,19 @@
 .item p {
   text-align: center;
   font-weight: bold;
+  /* color: black; */
+  box-shadow: 3px -5px 10px 0px rgba(0, 0, 0, 0.75);
+  text-shadow: 1px 1px 12px rgba(128, 0, 0, 1);
+  background-color: rgb(38, 117, 149, 0.75);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.item:hover p {
+  opacity: 0;
 }
 
 @media (min-width: 500px) {

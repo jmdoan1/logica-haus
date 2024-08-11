@@ -11,6 +11,14 @@ export default function PortfolioGrid() {
       name: "Trivia Pal",
       slug: "trivia-pal",
     },
+    {
+      name: "Spirated",
+      slug: "spirated",
+    },
+    {
+      name: "iOS SDK",
+      slug: "ios-sdk",
+    },
   ];
 
   return (

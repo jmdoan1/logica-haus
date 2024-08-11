@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
+import ProgressWheel from "./components/progress-wheel";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -52,8 +54,12 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
+      <head>
+        <Script src="../progress-wheel.js" strategy="afterInteractive" />
+      </head>
       <body className="antialiased mx-4 mt-8 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+          <ProgressWheel />
           <Navbar />
           {children}
           <Footer />
