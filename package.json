@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mantine/hooks": "^7.12.1",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "^22.0.3",
     "@types/react": "^18.3.3",

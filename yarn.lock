@@ -25,6 +25,11 @@
     js-tokens "^4.0.0"
     picocolors "^1.0.0"
 
+"@mantine/hooks@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.12.1.tgz#a2b402b02eb2f8bb64739656dce87e00935f92f8"
+  integrity sha512-YPA3qiMHJkWID5+YzakBaLvjHtX3Fg3PdPY49iIb/CaWM9+lrJ+77TOVS7bsY7ZTBHXUfzft1/6Woqt3xSuweA==
+
 "@mdx-js/mdx@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-3.0.1.tgz#617bd2629ae561fdca1bb88e3badd947f5a82191"

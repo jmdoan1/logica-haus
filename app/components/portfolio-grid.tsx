@@ -1,3 +1,4 @@
+import PageInPage from "./page-in-page";
 import "./portfolio-grid.css";
 
 interface Project {
@@ -63,6 +64,10 @@ export default function PortfolioGrid() {
   return (
     <section>
       <div className="grid">
+        <a href="#" className="item" key={"this-website"}>
+          <PageInPage style={{ objectFit: "cover" }} />
+          <p>THIS WEBSITE</p>
+        </a>
         {projects.map(({ name, slug, scale }) => (
           <a href={`/projects/${slug}`} className="item" key={slug}>
             <img
@@ -70,12 +75,10 @@ export default function PortfolioGrid() {
               src={`assets/projects/${slug}/preview.png`}
               style={scale ? { transform: `scale(${scale})` } : {}}
             />
-            <div>
-              <p>{name.toUpperCase()}</p>
-            </div>
+            <p>{name.toUpperCase()}</p>
           </a>
         ))}
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((x) => (
+        {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((x) => (
           <div className="item" key={x}>
             <img
               src={`https://picsum.photos/500?random=${x}`}
@@ -85,7 +88,7 @@ export default function PortfolioGrid() {
               <p>Project {x}</p>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </section>
   );
