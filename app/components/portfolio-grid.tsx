@@ -1,5 +1,3 @@
-import { githubUrl } from "app/global";
-import PageInPage from "./page-in-page";
 import "./portfolio-grid.css";
 
 interface Project {
@@ -65,10 +63,6 @@ export default function PortfolioGrid() {
   return (
     <section>
       <div className="grid">
-        <a href={githubUrl} className="item" key={"this-website"}>
-          <PageInPage style={{ objectFit: "cover" }} />
-          <p>THIS WEBSITE</p>
-        </a>
         {projects.map(({ name, slug, scale }) => (
           <a href={`/projects/${slug}`} className="item" key={slug}>
             <img
