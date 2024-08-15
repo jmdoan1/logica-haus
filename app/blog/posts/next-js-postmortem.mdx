@@ -276,7 +276,7 @@ project-root/
 │ └── page.tsx
 ```
 
-So it looks like I can just create a new `/app/projects/page.tsx` file and add a `'projects': { name: 'projects' }` record to the `navItems` and a quick test confirms this to be true. Yay, programming is easy! Please ignore the fact that I didn't actually "figure out how the template is managing the header, slugs, and routing" and instead just figured out how to manipulate the end result. Was the under-the-hood magic here provided by the template? Or is this boiled into Next.js? Who cares! I did the thing I had to do and the most efficient thing to do now is do the next thing I have to do.
+So it looks like I can just create a new `/app/projects/page.tsx` file and add a `/'projects': { name: 'projects' }` record to the `navItems` and a quick test confirms this to be true. Yay, programming is easy! Please ignore the fact that I didn't actually "figure out how the template is managing the header, slugs, and routing" and instead just figured out how to manipulate the end result. Was the under-the-hood magic here provided by the template? Or is this boiled into Next.js? Who cares! I did the thing I had to do and the most efficient thing to do now is do the next thing I have to do.
 
 The next thing I have to do is scaffold out a grid of labeled images that link to dynamic urls. Right now, my test code looks like this:
 
