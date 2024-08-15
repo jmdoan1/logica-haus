@@ -19,8 +19,6 @@ const PageInPage = ({
   const [imageSrc, setImageSrc] = useState("");
 
   const captureVisibleWindow = useDebouncedCallback(async () => {
-    // const html2canvas = (await import("html2canvas")).default;
-
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
 
