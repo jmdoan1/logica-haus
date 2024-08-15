@@ -40,9 +40,11 @@ const PageInPage = ({
     captureVisibleWindow();
 
     window.addEventListener("scroll", captureVisibleWindow);
+    window.addEventListener("resize", captureVisibleWindow);
 
     return () => {
       window.removeEventListener("scroll", captureVisibleWindow);
+      window.removeEventListener("resize", captureVisibleWindow);
     };
   }, []);
 
