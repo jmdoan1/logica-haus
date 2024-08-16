@@ -9,10 +9,23 @@ function updateProgress() {
       : Math.floor(Math.max(Math.min(trueScrollPercent * 100, 100), 0));
 
   const progressElement = document.querySelector(".circular-progress");
-  progressElement.style.setProperty("--progress", scrollPercent);
-
   const progressText = document.querySelector(".progress-text");
-  progressText.innerHTML = `${scrollPercent}%`;
+
+  if (progressElement) {
+    progressElement.style.setProperty("--progress", scrollPercent);
+  }
+  if (progressText) {
+    progressText.innerHTML = `${scrollPercent}%`;
+  }
+
+  const progressImg = document.getElementById("pip");
+  if (progressImg) {
+    const imgScrollPercent = docHeight <= winHeight ? 0 : scrollPercent;
+    progressImg.style.setProperty(
+      "object-position",
+      `50% ${imgScrollPercent}%`
+    );
+  }
 }
 
 updateProgress();

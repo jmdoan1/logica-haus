@@ -17,32 +17,34 @@ const PageInPage = ({
   "src"
 >) => {
   const [imageSrc, setImageSrc] = useState("");
+  const [didFirstLoad, setDidFirstLoad] = useState(false);
 
   const captureVisibleWindow = useDebouncedCallback(async () => {
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
 
-    // html2canvas(document.getElementById("html") ?? document.body, {
     html2canvas(document.getElementById("canvas") ?? document.body, {
       backgroundColor: null,
       width:
         document.getElementById("canvas")?.clientWidth ?? window.innerWidth,
-      height: window.innerHeight,
+      height: document.body.clientHeight,
       scrollX: -scrollX,
       scrollY: -scrollY,
     }).then((canvas) => {
       setImageSrc(canvas.toDataURL("image/png"));
+      if (!didFirstLoad) {
+        setDidFirstLoad(true);
+        captureVisibleWindow();
+      }
     });
   }, 300);
 
   useEffect(() => {
     captureVisibleWindow();
 
-    window.addEventListener("scroll", captureVisibleWindow);
     window.addEventListener("resize", captureVisibleWindow);
 
     return () => {
-      window.removeEventListener("scroll", captureVisibleWindow);
       window.removeEventListener("resize", captureVisibleWindow);
     };
   }, []);

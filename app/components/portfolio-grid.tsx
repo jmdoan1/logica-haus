@@ -11,24 +11,24 @@ interface Project {
 export default function PortfolioGrid() {
   const projects: Project[] = [
     {
-      name: "ScenePin",
-      slug: "scenepin",
-      scale: 1.45,
-    },
-    {
       name: "Spirated",
       slug: "spirated",
       scale: 1.45,
     },
     {
-      name: "Trivia Pal",
-      slug: "trivia-pal",
-      scale: 1.75,
+      name: "ScenePin",
+      slug: "scenepin",
+      scale: 1.45,
     },
     {
       name: "iOS SDK",
       slug: "ios-sdk",
       scale: 1.55,
+    },
+    {
+      name: "Trivia Pal",
+      slug: "trivia-pal",
+      scale: 1.75,
     },
     {
       name: "Basket Counter",
@@ -56,6 +56,21 @@ export default function PortfolioGrid() {
       scale: 1.7,
     },
     {
+      name: "Pharmacy Quotes",
+      slug: "pharmacy-quotes",
+      scale: 1.7,
+    },
+    {
+      name: "MPG Tracker",
+      slug: "mpg-tracker",
+      scale: 1.7,
+    },
+    {
+      name: "Weight Calculator",
+      slug: "weight-calculator",
+      scale: 1.7,
+    },
+    {
       name: "Swipper",
       slug: "swipper",
       scale: 1.7,
@@ -66,7 +81,10 @@ export default function PortfolioGrid() {
     <section>
       <div className="grid">
         <a href={githubUrl} className="item" key={"this-website"}>
-          <PageInPage style={{ objectFit: "cover" }} />
+          <PageInPage
+            id="pip"
+            style={{ objectFit: "cover", objectPosition: "50% 0%" }}
+          />
           <p>THIS WEBSITE</p>
         </a>
         {projects.map(({ name, slug, scale }) => (
@@ -79,17 +97,6 @@ export default function PortfolioGrid() {
             <p>{name.toUpperCase()}</p>
           </a>
         ))}
-        {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((x) => (
-          <div className="item" key={x}>
-            <img
-              src={`https://picsum.photos/500?random=${x}`}
-              alt={x.toString()}
-            />
-            <div>
-              <p>Project {x}</p>
-            </div>
-          </div>
-        ))} */}
       </div>
     </section>
   );
