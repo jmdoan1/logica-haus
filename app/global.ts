@@ -1,1 +1,2 @@
-export const githubUrl = "https://github.com/jmdoan1/logica-haus";
+export const githubAccount = "https://github.com/jmdoan1";
+export const githubUrl = `${githubAccount}/logica-haus`;
