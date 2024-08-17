@@ -82,7 +82,7 @@ export default function PortfolioGrid() {
       <div className="grid">
         <a href={githubUrl} className="item" key={"this-website"}>
           <PageInPage
-            id="pip"
+            className="pip"
             style={{ objectFit: "cover", objectPosition: "50% 0%" }}
           />
           <p>THIS WEBSITE</p>

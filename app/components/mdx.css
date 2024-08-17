@@ -12,6 +12,10 @@
   max-width: 600px;
 }
 
+.inverse {
+  filter: invert(100%);
+}
+
 code {
   white-space: pre-wrap !important;
 }

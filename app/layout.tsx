@@ -56,6 +56,7 @@ export default function RootLayout({
       )}
     >
       <head>
+        <link rel="icon" href="/assets/logo/logo-1-light-w-bg.svg" />
         <Script src="../progress.js" strategy="afterInteractive" />
       </head>
       <body className="antialiased mx-4 lg:mx-auto">
