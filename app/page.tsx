@@ -17,7 +17,7 @@ export default function Page() {
         My Portfolio
       </h1> */}
         <div style={{ marginTop: -120 }} />
-        <VideoHero src="/assets/landing/into-the-grid.mp4" speed={0.85}>
+        <VideoHero src="/assets/landing/into-the-grid.mp4">
           <div className="content hero-top-left">
             <h1 className="logica-haus hacker" data-value="LogicaHaus">
               LogicaHaus
