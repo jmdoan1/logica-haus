@@ -72,7 +72,7 @@ Looking at `src/app/page.tsx`, I was immediately assaulted with the following:
 </div>
 ```
 
-Honestly, what the fuck is even this? This is the most disgusting thing I have ever seen. This is ONE LINE of code? Sod off, mate. If I saw this in a code review, my eyes would immediately skip to the next line because it lgtm, and I highly doubt I'm alone here. The next time I hear someone say that inline styling is messy and makes the code unreadable, I'm going to stick my finger down my throat and vomit this line of code all over their shoes.
+Honestly, what the fuck is even this? This is the most disgusting thing I have ever seen. This is ONE LINE of code? Sod off, mate. I even had to add some css to make this code block wrap the text so you wouldn't have to scroll horizontally for 5 minutes. If I saw this in a code review, my eyes would immediately skip to the next line because it lgtm, and I highly doubt I'm alone here. The next time I hear someone say that inline styling is messy and makes the code unreadable, I'm going to stick my finger down my throat and vomit this line of code all over their shoes.
 
 It's also apparent that there's some Tailwind-specific fuckery going on here, which means I'll need to read some docs, so no thanks. I'd rather spend my time getting better at actual CSS, which has now become a tertiary goal of this project for nothing but pure spite.
 
@@ -401,3 +401,94 @@ I also hit a very confusing problem where I was unable to deploy the project to 
 The second issue I faced was adding the above gif to the project, because it was over 100mb, which meant I had to spend precious minutes following the instructions to set up git lfs (large file storage). Such a pain. This required AT LEAST (exactly) 2 terminal commands. I admit I'm being a little facetious here, but this is called context switching, which, according to some studies, means this task actually wasted an hour of my time, but at least gave me an excuse to take a Rocket League break.
 
 It's now time to admit that I have sold you a lie. I still have not copied all the content from the Squarespace site, but this post can't be published until the website is done, so let's just pretend. I think I'd rather work on the landing page right now anyways. With some cool CSS stuff obiously.
+
+Actually, I think it's maybe time a little SEO work. I've noticed that the page titles displayed in the tab say "Next.js Portfolio Starter", the blog page says "Blog | Next.js Portfolio Starter", the blog post pages say "Post title | Next.js Portfolio Starter", but my newly added Projects page just says "Next.js Portfolio Starter" without the "Projects | ...", so lets look into what's going on here and see how we can manipulate it.
+
+There's some code in the `app/layout.tsx` file that looks like this:
+
+```
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "Next.js Portfolio Starter",
+    template: "%s | Next.js Portfolio Starter",
+  },
+  description: "This is my portfolio.",
+  openGraph: {
+    title: "My Portfolio",
+    description: "This is my portfolio.",
+    url: baseUrl,
+    siteName: "My Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+```
+
+and the `app/blog/page.tsx` file has some code that looks like this:
+
+```
+export const metadata = {
+  title: "Blog",
+  description: "Read my blog.",
+};
+```
+
+and the `app/blog/[slug]/page.tsx` has some code that looks like this:
+
+```
+export function generateMetadata({ params }) {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  if (!post) {
+    return;
+  }
+
+  let {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post.metadata;
+  let ogImage = image
+    ? image
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `${baseUrl}/blog/${post.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
+```
+
+etc. etc...
+
+So it looks like the layout page outlines the initial metadata and each page can override whichever value(s) it wants to, which is pretty nifty, and confirmed to be an accurate assessment. After some modifications, the Projects page tab now says "Projects | LogicaHaus"

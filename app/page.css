@@ -1,0 +1,33 @@
+.content {
+  /* position: relative; */
+  z-index: 1;
+  color: white;
+  /* text-align: center; */
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.logica-haus {
+  font-size: 6rem;
+  font-weight: 900;
+}
+
+.hero-top-left {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  /* background-color: rgba(255, 255, 255, 0.45); */
+  /* background-color: rgba(0, 0, 0, 0.75); */
+}
+
+.hero-bottom-right {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  /* background-color: rgba(255, 255, 255, 0.45); */
+  /* background-color: rgba(0, 0, 0, 0.75); */
+}
+
+.logo {
+  width: 350px;
+}

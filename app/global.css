@@ -153,4 +153,5 @@ html {
 body {
   max-width: 1280px;
   align-self: center;
+  --dead-space: calc((100vw - 100%) / 2);
 }

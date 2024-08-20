@@ -1,4 +1,6 @@
+import AdditionalContent from "app/components/additional-content";
 import PortfolioGrid from "app/components/portfolio-grid";
+import { BlogPosts } from "app/components/posts";
 import { baseUrl } from "app/sitemap";
 
 export function generateMetadata({ params }) {
@@ -35,6 +37,7 @@ export default function Page() {
   return (
     <>
       <PortfolioGrid />
+      <AdditionalContent />
     </>
   );
 }
