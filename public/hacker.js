@@ -7,18 +7,24 @@ document.querySelectorAll(".hacker").forEach((element) => {
   };
 
   if (window.getComputedStyle(element).opacity === "0") {
-    console.log("wassup");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           element.style.opacity = "1";
-          hack({ target: entry.target }); // Trigger the hack function when the element is visible
-          observer.unobserve(entry.target); // Optionally unobserve if you only want to trigger once
+          hack({ target: entry.target });
+          observer.unobserve(entry.target);
         }
       });
     });
 
-    observer.observe(element);
+    if (element.classList.contains("wait")) {
+      setTimeout(() => {
+        observer.observe(element);
+        element.classList.remove("wait");
+      }, 3000);
+    } else {
+      observer.observe(element);
+    }
   }
 });
 
@@ -29,7 +35,7 @@ function hack(event) {
     event.target.innerText = event.target.dataset.value
       .split("")
       .map((letter, index) => {
-        if (letter === " ") return letter;
+        // if (letter === " ") return letter;
         if (index < iterations) {
           return event.target.dataset.value[index];
         }
