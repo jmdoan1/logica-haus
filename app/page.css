@@ -54,15 +54,6 @@
   animation: spin linear 3s, creep linear 3s;
 }
 
-@media (max-width: 820px) {
-  .logo,
-  .hero-bottom-right {
-    left: 50%;
-    transform: translateX(-50%);
-    right: unset;
-  }
-}
-
 @keyframes creep {
   0% {
     aspect-ratio: 7;
@@ -81,6 +72,56 @@
 @keyframes spin {
   50% {
     transform: rotateY(180deg);
+  }
+}
+
+@media (max-width: 820px) {
+  .logo,
+  .hero-bottom-right {
+    left: 50%;
+    transform: translateX(-50%);
+    right: unset;
+    /* animation: unset; */
+  }
+  .logica-haus {
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+  }
+  .sub-logica {
+    text-align: center;
+    width: 100%;
+    font-size: 0.65rem;
+  }
+
+  @keyframes creep {
+    0% {
+      aspect-ratio: 7;
+      scale: 0.5;
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      aspect-ratio: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: translateX(-50%);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@media (max-height: 480px) {
+  .logo {
+    top: 10%;
   }
 }
 

@@ -10,6 +10,17 @@ export default function Page() {
         html {
           overflow-x: hidden;
         }
+        body {
+          max-width: unset;
+        }
+        aside {
+          margin-left: 9%;
+        }
+        @media (max-width: 820px) {
+          aside {
+            margin-left: 0;
+          }
+        }
       `}</style>
       <Script src="../hacker.js" strategy="afterInteractive" />
       <section>
