@@ -2,6 +2,7 @@ import { BlogPosts } from "app/components/posts";
 import "./page.css";
 import VideoHero from "./components/video-hero";
 import Script from "next/script";
+import Why from "./components/why";
 
 export default function Page() {
   return (
@@ -15,6 +16,7 @@ export default function Page() {
         }
         aside {
           margin-left: 9%;
+          color: white;
         }
         @media (max-width: 820px) {
           aside {
@@ -49,6 +51,7 @@ export default function Page() {
             className="content logo 2"
           />
         </VideoHero>
+        <Why />
         <p className="mb-4">{`wip`}</p>
         <div className="my-8">
           <BlogPosts />

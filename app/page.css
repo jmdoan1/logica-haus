@@ -85,13 +85,13 @@
   }
   .logica-haus {
     width: 100%;
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
   }
   .sub-logica {
     text-align: center;
     width: 100%;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
   }
 
   @keyframes creep {
@@ -110,12 +110,18 @@
   }
 
   @keyframes spin {
-    0% {
-      transform: translateX(-50%);
-    }
     50% {
-      transform: translateX(-50%);
+      transform: translateX(-50%) rotateY(-180deg);
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .logica-haus {
+    font-size: 3rem;
+  }
+  .sub-logica {
+    font-size: 0.65rem;
   }
 }
 
