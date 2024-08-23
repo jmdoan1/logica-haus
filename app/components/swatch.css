@@ -13,6 +13,7 @@
   --cosco: url("../../public/assets/landing/swatch/IMG_2677.jpg");
   --hilo: url("../../public/assets/landing/swatch/IMG_3320.PNG");
   --mpg: url("../../public/assets/landing/swatch/IMG_1712.jpg");
+  --quiz: url("../../public/assets/landing/swatch/IMG_1452.jpg");
 }
 
 .swatch {
@@ -39,6 +40,7 @@
   backface-visibility: hidden;
   margin-left: -35px;
   transform: rotate(0deg);
+  border-radius: 10px;
 }
 
 .swatch div:before {
@@ -61,14 +63,14 @@
 }
 
 .swatch div:nth-child(2) {
-  background-image: var(--hilo);
+  background-image: var(--cosco);
   background-size: cover;
   background-position: center;
   animation: swatch-blue-motion 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .swatch div:nth-child(3) {
-  background-image: var(--cosco);
+  background-image: var(--quiz);
   background-size: cover;
   background-position: center;
   animation: swatch-green-motion 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -82,14 +84,14 @@
 }
 
 .swatch div:nth-child(5) {
-  background-image: var(--scene-pin-results);
+  background-image: var(--mpg);
   background-size: cover;
   background-position: center;
   animation: swatch-orange-motion 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .swatch div:nth-child(6) {
-  background-image: var(--mpg);
+  background-image: var(--scene-pin-results);
   background-size: cover;
   background-position: center;
   animation: swatch-red-motion 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
