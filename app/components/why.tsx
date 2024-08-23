@@ -8,8 +8,8 @@ export default function Why() {
       <div className="w-inner-container">
         <h1 className="why">Why choose us?</h1>
         <br />
-        <div className="benefit">
-          <div className="c-left">
+        <div className="benefit left-first">
+          <div className="c-left" style={{ justifyContent: "center" }}>
             <Responsive />
           </div>
           <div className="c-right column">
@@ -27,8 +27,8 @@ export default function Why() {
           </div>
         </div>
         <br />
-        <div className="benefit">
-          <div className="c-left column">
+        <div className="benefit right-first">
+          <div className="c-left column" style={{ padding: 0 }}>
             <h2 className="h2">Deliver Unmatched Performance</h2>
             <br />
             <p style={{ textAlign: "justify" }}>
@@ -45,7 +45,13 @@ export default function Why() {
               highest level of performance and reliability.
             </p>
           </div>
-          <div className="c-right" style={{ justifyContent: "center" }}>
+          <div
+            className="c-right"
+            style={{
+              justifyContent: "center",
+              padding: 0,
+            }}
+          >
             <Swatch />
           </div>
         </div>
