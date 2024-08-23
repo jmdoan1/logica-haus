@@ -67,6 +67,7 @@
   height: var(--window-height-1);
   aspect-ratio: var(--window-aspect-1);
   max-width: 100%;
+  min-height: 320px;
   background-color: var(--window-background);
   animation: window forwards var(--animation-duration) infinite;
   overflow: hidden;

@@ -9,7 +9,10 @@ export default function Why() {
         <h1 className="why">Why choose us?</h1>
         <br />
         <div className="benefit left-first">
-          <div className="c-left" style={{ justifyContent: "center" }}>
+          <div
+            className="c-left"
+            style={{ justifyContent: "center", overflowX: "clip" }}
+          >
             <Responsive />
           </div>
           <div className="c-right column">
@@ -32,23 +35,24 @@ export default function Why() {
             <h2 className="h2">Deliver Unmatched Performance</h2>
             <br />
             <p style={{ textAlign: "justify" }}>
-              Looking for a more powerful user experience? Native apps offer
-              unparalleled performance and deep integration with
-              platform-specific features, providing a seamless user experience
-              across iOS, Android, macOS, and Windows. By leveraging the full
-              capabilities of each operating system, native apps deliver faster
-              load times, smoother interactions, and access to advanced
-              functionalities that cross-platform solutions haven't yet caught
-              up to. Whether you're aiming to create a robust mobile app or a
-              powerful desktop application, building natively ensures that your
-              product is optimized for the platform, offering your users the
-              highest level of performance and reliability.
+              Looking for a more powerful user experience? We also offer native
+              applications with unparalleled performance and deep integration
+              with platform-specific features, providing a seamless user
+              experience across iOS, Android, macOS, and Windows. By leveraging
+              the full capabilities of each operating system, native apps
+              deliver faster load times, smoother interactions, and access to
+              advanced functionalities that cross-platform solutions haven't yet
+              caught up to. Whether you're aiming to create a robust mobile app
+              or a powerful desktop application, building natively ensures that
+              your product is optimized for the platform, offering your users
+              the highest level of performance and reliability.
             </p>
           </div>
           <div
             className="c-right"
             style={{
               justifyContent: "center",
+              overflowX: "clip",
               padding: 0,
             }}
           >
