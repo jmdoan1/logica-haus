@@ -1,16 +1,29 @@
 .w-container {
-  margin-top: 30px;
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.w-inner-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1280px;
 }
 
 .why {
   width: 100%;
   text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 3rem;
+  font-weight: bolder;
 }
 
 .benefit {
   display: flex;
+  flex: 1;
   flex-direction: row;
   width: 100%;
 }
@@ -20,6 +33,7 @@
   display: flex;
   flex: 1;
   justify-content: right;
+  text-align: right;
 }
 
 .c-right {
@@ -31,4 +45,24 @@
 
 .column {
   flex-direction: column;
+}
+.h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 400px) {
+  :root {
+    --window-width-2: 225px;
+    --window-width-3: 300px;
+  }
+
+  .benefit {
+    flex-direction: column;
+  }
+
+  .c-left,
+  .c-right {
+    justify-content: center;
+  }
 }

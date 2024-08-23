@@ -1,11 +1,12 @@
+/* Variables */
 :root {
-  --animation-duration: 6s;
+  --animation-duration: 5s;
 
   --background-color: #d55084;
   --window-top: #3c3e99;
   --window-bar: #4c54a4;
   --window-content: #fff;
-  --window-background: #efeff3;
+  --window-background: #949494;
   --button-color: #e20269;
 
   --window-width-1: 140px;
@@ -79,6 +80,8 @@
   width: 100%;
   height: 100px;
   background-color: var(--window-content);
+  left: 50%;
+  transform: translateX(-50%);
   box-shadow: 0 2px 4px rgba(100, 100, 100, 0.1);
   content: "";
 }
@@ -198,17 +201,3 @@
 * {
   box-sizing: border-box;
 }
-
-/* html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--background-color);
-} */
