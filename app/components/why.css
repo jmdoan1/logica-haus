@@ -8,6 +8,7 @@
 
 .w-inner-container {
   display: flex;
+  align-items: stretch;
   flex: 1;
   flex-direction: column;
   width: 100%;

@@ -1,3 +1,7 @@
 export default function Page() {
-  return <section>don't talk to me</section>;
+  return (
+    <section>
+      <p>Don't talk to me</p>
+    </section>
+  );
 }

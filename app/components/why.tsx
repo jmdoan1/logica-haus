@@ -1,3 +1,4 @@
+import Data from "./landing/data";
 import Responsive from "./responsive";
 import Swatch from "./swatch";
 import "./why.css";
@@ -57,6 +58,30 @@ export default function Why() {
             }}
           >
             <Swatch />
+          </div>
+        </div>
+        <div className="benefit left-first">
+          <div
+            className="c-left"
+            style={{ justifyContent: "center", padding: 5 }}
+          >
+            <Data />
+          </div>
+          <div className="c-right column">
+            <h2 className="h2">Tackle Your Data</h2>
+            <br />
+            <p style={{ textAlign: "justify" }}>
+              Efficiently managing your data is crucial for any growing
+              business. We specialize in developing custom, scalable backends
+              and databases tailored to your specific needs. Whether you're
+              managing a vast amount of data or need a solution that grows with
+              your business, our backends are robust built for and flexibility.
+              We ensure that your data infrastructure is not only secure and
+              reliable but also optimized for performance, allowing you to focus
+              on what matters most—your business. From real-time analytics to
+              complex data relationships, we design systems that can handle it
+              all, ensuring your operations run smoothly now and in the future.
+            </p>
           </div>
         </div>
       </div>
