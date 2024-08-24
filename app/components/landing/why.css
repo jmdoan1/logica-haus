@@ -27,6 +27,7 @@
   flex: 1;
   flex-direction: row;
   width: 100%;
+  margin-top: 15px;
 }
 
 .c-left {
@@ -48,9 +49,16 @@
 .column {
   flex-direction: column;
 }
+
 .h2 {
   font-size: 2rem;
   font-weight: bold;
+}
+
+.details {
+  text-align: justify;
+  flex-grow: 1;
+  place-content: center;
 }
 
 @media (max-width: 1020px) {

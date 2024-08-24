@@ -45,13 +45,19 @@
   position: absolute;
   top: 15%;
   left: 10%;
-  width: 400px;
+  width: 350px;
   max-width: 80vw;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: 50% top;
   filter: drop-shadow(0 0 10px rgba(255, 165, 0, 1));
   animation: spin linear 3s, creep linear 3s;
+}
+
+@media (max-height: 720px) {
+  .logo {
+    top: 5%;
+  }
 }
 
 @keyframes creep {

@@ -1,8 +1,8 @@
 import { BlogPosts } from "app/components/posts";
 import "./page.css";
-import VideoHero from "./components/video-hero";
+import VideoHero from "./components/landing/video-hero";
 import Script from "next/script";
-import Why from "./components/why";
+import Why from "./components/landing/why";
 
 export default function Page() {
   return (

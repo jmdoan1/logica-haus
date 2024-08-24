@@ -1,0 +1,201 @@
+/* html {
+    background: #0C0019;
+} */
+.api-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+#redblocks > * {
+  transform: translate3d(160px, -93px, 0);
+  animation: moveblocks 4s 1s ease infinite;
+}
+
+@keyframes moveblocks {
+  0% {
+    transform: translate3d(160px, -93px, 0);
+  }
+  50%,
+  100% {
+    transform: translate(0);
+  }
+}
+
+#firstBlock {
+  transform: translate3d(160px, -93px, 0);
+  animation: firstBlock 4s 1s ease infinite;
+}
+#blockdis {
+  animation: blockdis 4s 1s ease infinite;
+}
+@keyframes blockdis {
+  30% {
+    opacity: 1;
+  }
+  40%,
+  100% {
+    opacity: 0;
+    transform: translate3d(-160px, 93px, 0);
+  }
+}
+@keyframes firstBlock {
+  0%,
+  15% {
+    opacity: 0;
+  }
+  40%,
+  100% {
+    opacity: 1;
+  }
+}
+
+#redblocksparticles g:nth-child(1) polygon,
+#redblocksparticles g:nth-child(2) polygon,
+#redblocksparticles g:nth-child(3) polygon,
+#redblocksparticles g:nth-child(4) polygon {
+  opacity: 0.35;
+  animation: glow 4s 1s ease infinite;
+}
+
+#redblocksparticles g:nth-child(1) g circle:nth-child(1),
+#redblocksparticles g:nth-child(1) g circle:nth-child(2),
+#redblocksparticles g:nth-child(1) g circle:nth-child(3),
+/* ... repeat for all 20 children for all 4 g elements */
+#redblocksparticles g:nth-child(4) g circle:nth-child(20) {
+  animation: dots 4s 1000ms ease infinite;
+}
+
+@keyframes glow {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  60%,
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes dots {
+  0%,
+  35% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  60%,
+  80% {
+    transform: translate(55px, -35px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(55px, -35px);
+    opacity: 0;
+  }
+}
+
+#purplebg > :nth-child(1),
+#purplebg > :nth-child(2),
+/* ... repeat for all 22 children */
+#purplebg > :nth-child(22) {
+  animation: up 2s ease infinite alternate;
+}
+
+@keyframes up {
+  to {
+    transform: translate(0, -25px);
+  }
+}
+
+#bottomparticles > :nth-child(1),
+#bottomparticles > :nth-child(2),
+/* ... repeat for all 13 children */
+#bottomparticles > :nth-child(13),
+#bottomparticles2 > :nth-child(1),
+#bottomparticles2 > :nth-child(2),
+/* ... repeat for all 13 children */
+#bottomparticles2 > :nth-child(13),
+#redglowparticles > :nth-child(1),
+#redglowparticles > :nth-child(2),
+/* ... repeat for all 13 children */
+#redglowparticles > :nth-child(13) {
+  animation: particles 4s ease infinite alternate, p 2s ease infinite alternate;
+}
+
+@keyframes p {
+  85%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes particles {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(10px, 15px);
+  }
+}
+
+.particlespoly {
+  animation: p 2s ease infinite alternate;
+}
+
+#d-app g:nth-child(1),
+#d-app g:nth-child(2),
+#d-app g:nth-child(3),
+#d-app g:nth-child(4),
+#d-apps2 g:nth-child(1),
+#d-apps2 g:nth-child(2),
+#d-apps2 g:nth-child(3),
+#d-apps2 g:nth-child(4) {
+  animation: updown 2s ease-in-out infinite alternate;
+}
+
+#d-apps2wrapper g:nth-child(3) g > circle:nth-child(1),
+#d-apps2wrapper g:nth-child(3) g > circle:nth-child(2),
+/* ... repeat for all 20 children */
+#d-apps2wrapper g:nth-child(3) g > circle:nth-child(20) {
+  animation: updown 2s ease infinite alternate;
+}
+
+#d-appswrapper g:nth-child(2) g > circle:nth-child(1),
+#d-appswrapper g:nth-child(2) g > circle:nth-child(2),
+/* ... repeat for all 20 children */
+#d-appswrapper g:nth-child(2) g > circle:nth-child(20) {
+  animation: updown 2s ease infinite alternate;
+}
+
+@keyframes updown {
+  100% {
+    transform: translate(0, -20px);
+  }
+}
+
+#Layer_1 > g:nth-child(2) > g:nth-child(18) > g:nth-child(12) {
+  animation: arrows 1s ease-in-out infinite alternate,
+    p 2s ease infinite alternate;
+}
+@keyframes arrows {
+  to {
+    transform: translate(25px, 25px);
+  }
+}
+
+#Layer_1 > g:nth-child(2) > g:nth-child(17) > g:nth-child(13) {
+  animation: arrows2 1s ease-in-out infinite alternate,
+    p 2s ease infinite alternate;
+}
+@keyframes arrows2 {
+  to {
+    transform: translate(-25px, -25px);
+  }
+}
+
+#Layer_1 > g:nth-child(2) > g:nth-child(17) > g:nth-child(12) {
+  animation: arrows 1s ease-in-out infinite alternate,
+    p 2s ease infinite alternate;
+}

@@ -1,4 +1,5 @@
-import Data from "./landing/data";
+import ApiAnim from "./api-anim";
+import Data from "./data";
 import Responsive from "./responsive";
 import Swatch from "./swatch";
 import "./why.css";
@@ -19,7 +20,7 @@ export default function Why() {
           <div className="c-right column">
             <h2 className="h2">Reach your audience on any platform</h2>
             <br />
-            <p style={{ textAlign: "justify" }}>
+            <p className="details">
               We specialize in fully responsive hybrid applications, which means
               a single codebase can deliver a website, iOS app, Android app, and
               more. This approach not only guarantees a seamless and beautiful
@@ -35,7 +36,7 @@ export default function Why() {
           <div className="c-left column" style={{ padding: 0 }}>
             <h2 className="h2">Deliver Unmatched Performance</h2>
             <br />
-            <p style={{ textAlign: "justify" }}>
+            <p className="details">
               Looking for a more powerful user experience? We also offer native
               applications with unparalleled performance and deep integration
               with platform-specific features, providing a seamless user
@@ -70,7 +71,7 @@ export default function Why() {
           <div className="c-right column">
             <h2 className="h2">Tackle Your Data</h2>
             <br />
-            <p style={{ textAlign: "justify" }}>
+            <p className="details">
               Efficiently managing your data is crucial for any growing
               business. We specialize in developing custom, scalable backends
               and databases tailored to your specific needs. Whether you're
@@ -82,6 +83,33 @@ export default function Why() {
               complex data relationships, we design systems that can handle it
               all, ensuring your operations run smoothly now and in the future.
             </p>
+          </div>
+        </div>
+        <div className="benefit right-first">
+          <div className="c-left column" style={{ padding: 0 }}>
+            <h2 className="h2">Seamless API Integrations</h2>
+            <br />
+            <p className="details">
+              Whether you need to authenticate users, process payments, get
+              shipping updates, or even reference pokedex data, 3rd party APIs
+              often lay at the center of your business operations. We ensure
+              these integrations are smooth, reliable, and secure, allowing your
+              application to connect effortlessly with external services. By
+              expertly managing API connections, we help you extend the
+              capabilities of your application without the need for extensive
+              in-house development, allowing you to focus on your core business
+              while leveraging the power of best-in-class third-party services.
+            </p>
+          </div>
+          <div
+            className="c-right"
+            style={{
+              justifyContent: "center",
+              overflowX: "clip",
+              padding: 0,
+            }}
+          >
+            <ApiAnim />
           </div>
         </div>
       </div>
