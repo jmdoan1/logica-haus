@@ -54,13 +54,13 @@ export default function Scroller() {
     const tags = [...skills]
       .sort(() => Math.random() - Math.random())
       .map((skill) => (
-        <div className="tag" key={`${skill}-${listNumber}`}>
-          <span>#</span> {skill}
+        <div className="scroller-tag" key={`${skill}-${listNumber}`}>
+          <span className="scroller-tag-span">#</span> {skill}
         </div>
       ));
 
     return (
-      <div className="inner" key={`list-${listNumber}`}>
+      <div className="scroller-inner" key={`list-${listNumber}`}>
         {tags}
       </div>
     );
@@ -68,9 +68,9 @@ export default function Scroller() {
 
   return (
     <div className="scroller">
-      <div className="tag-list">
+      <div className="scroller-tag-list">
         <div
-          className="loop-slider"
+          className="scroller-loop-slider"
           style={
             {
               "--duration": "25951ms",
@@ -81,7 +81,7 @@ export default function Scroller() {
           {getRanomizedList(1)}
         </div>
         <div
-          className="loop-slider"
+          className="scroller-loop-slider"
           style={
             {
               "--duration": "29260ms",
@@ -92,7 +92,7 @@ export default function Scroller() {
           {getRanomizedList(2)}
         </div>
         <div
-          className="loop-slider"
+          className="scroller-loop-slider"
           style={
             {
               "--duration": "30951ms",
@@ -102,29 +102,7 @@ export default function Scroller() {
         >
           {getRanomizedList(3)}
         </div>
-        {/* <div
-          className="loop-slider"
-          style={
-            {
-              "--duration": "16638ms",
-              "--direction": "reverse",
-            } as React.CSSProperties
-          }
-        >
-          {getRanomizedList(4)}
-        </div> */}
-        {/* <div
-          className="loop-slider"
-          style={
-            {
-              "--duration": "15936ms",
-              "--direction": "normal",
-            } as React.CSSProperties
-          }
-        >
-          {getRanomizedList(5)}
-        </div> */}
-        <div className="fade"></div>
+        <div className="scroller-fade"></div>
       </div>
     </div>
   );
