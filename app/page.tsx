@@ -52,11 +52,13 @@ export default function Page() {
           />
         </VideoHero>
         <Why />
+        {/* <VideoHero src="/assets/landing/confused.mp4">
+          <div className="filter"></div>
+        </VideoHero> */}
         <p className="mb-4">{`wip`}</p>
         <div className="my-8">
           <BlogPosts />
         </div>
-        <div style={{ height: 1000 }} />
       </section>
     </>
   );

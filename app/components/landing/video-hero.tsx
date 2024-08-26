@@ -1,23 +1,23 @@
-// "use client";
-// import { useEffect } from "react";
+"use client";
+import { useEffect } from "react";
 import "./video-hero.css";
 
 export default function VideoHero({
   children,
   src,
-}: // speed,
-{
+  speed,
+}: {
   children: React.ReactNode;
   src: string;
-  // speed?: number;
+  speed?: number;
 }) {
-  // useEffect(() => {
-  //   const video = document.getElementById(src) as HTMLVideoElement;
-  //   if (video && speed !== undefined) {
-  //     video.playbackRate = speed;
-  //   } else {
-  //   }
-  // }, []);
+  useEffect(() => {
+    const video = document.getElementById(src) as HTMLVideoElement;
+    if (video && speed !== undefined) {
+      video.playbackRate = speed;
+    } else {
+    }
+  }, []);
 
   return (
     <div className="video-background-container">

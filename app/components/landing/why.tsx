@@ -8,7 +8,7 @@ export default function Why() {
   return (
     <section className="w-container">
       <div className="w-inner-container">
-        <h1 className="why">Why choose us?</h1>
+        <h1 className="landing-h1">Why choose us?</h1>
         <br />
         <div className="benefit left-first">
           <div
@@ -112,6 +112,68 @@ export default function Why() {
             <ApiAnim />
           </div>
         </div>
+
+        <h1 className="landing-h1" style={{ textAlign: "left" }}>
+          What kinds of projects do we take?
+        </h1>
+        <p>
+          At LogicaHaus, we’re passionate about bringing your ideas to life,
+          whether you’re starting from scratch or looking to enhance an existing
+          project. We work with both individual clients and businesses of all
+          sizes, delivering custom solutions tailored to your unique needs.
+        </p>
+        <ul className={"list-disc list-inside"}>
+          <li>
+            <b>New Projects:</b> Ready to turn your vision into reality? We
+            specialize in launching new projects, from initial concept to final
+            product. Whether it's a cutting-edge frontend website, a
+            feature-rich mobile app, or a complex backend API, we’re here to
+            guide you every step of the way.
+          </li>
+          <li>
+            <b>Existing Projects:</b> Have an existing project that needs some
+            love? We’re experts at stepping in and enhancing your current
+            systems, optimizing performance, adding new features, and ensuring
+            your technology stack is up-to-date and scalable.
+          </li>
+          <li>
+            <b>Frontend & Backend Development:</b> From sleek, responsive
+            websites and mobile apps to robust backend systems and APIs, we
+            cover the full spectrum of development. We create user-friendly
+            interfaces that engage your audience and powerful backends that
+            drive your applications.
+          </li>
+          <li>
+            <b>Databases:</b> Data is the backbone of any modern application. We
+            design, implement, and manage scalable databases that ensure your
+            data is secure, accessible, and well-organized.
+          </li>
+          <li>
+            <b>Desktop Applications & Automation:</b> Need a desktop solution or
+            automation tools? We develop custom desktop applications and scripts
+            that streamline your workflow, whether it’s automating routine tasks
+            or building powerful standalone software.
+          </li>
+          <li>
+            <b>Bots & Scripts:</b> Efficiency and innovation are at our core. We
+            create intelligent bots and automation scripts that handle
+            everything from simple tasks to complex workflows, freeing up your
+            time to focus on what really matters.
+          </li>
+        </ul>
+        <p style={{ marginTop: 7 }}>
+          Whether you’re an individual with a groundbreaking idea or a business
+          looking to enhance your digital presence, we’re here to help you
+          succeed. Let’s create something amazing together.
+        </p>
+
+        <h1
+          className="landing-h1"
+          style={{ textAlign: "right", marginTop: 10 }}
+        >
+          Not sure where to start?
+        </h1>
+        <p style={{ textAlign: "right" }}>wip</p>
       </div>
     </section>
   );
