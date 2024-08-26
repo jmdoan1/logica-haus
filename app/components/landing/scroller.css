@@ -7,7 +7,7 @@
 .scroller {
   /* min-width: 100vw; */
   /* min-height: 100vh; */
-  margin-top: 10px;
+  /* margin-top: 10px; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -73,11 +73,12 @@ header a {
   color: #e2e8f0;
   font-size: 0.9rem;
   background-color: #334155;
+  font-weight: bolder;
   border-radius: 0.4rem;
   padding: 0.7rem 1rem;
   margin-right: 1rem; /* Must use margin-right instead of gap for the loop to be smooth */
-  box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 20%), 0 0.1rem 0.5rem rgb(0 0 0 / 30%),
-    0 0.2rem 1.5rem rgb(0 0 0 / 40%);
+  /* box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 20%), 0 0.1rem 0.5rem rgb(0 0 0 / 30%),
+    0 0.2rem 1.5rem rgb(0 0 0 / 40%); */
 }
 
 .tag span {

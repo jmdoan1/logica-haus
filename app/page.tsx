@@ -29,7 +29,7 @@ export default function Page() {
         {/* <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         My Portfolio
       </h1> */}
-        <div style={{ marginTop: -120 }} />
+        {/* <div style={{ marginTop: -120 }} /> */}
         <VideoHero src="/assets/landing/into-the-grid.mp4">
           <div
             className="content hero-bottom-right"
