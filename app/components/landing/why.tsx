@@ -1,6 +1,8 @@
+import Booknow from "../book-now";
 import ApiAnim from "./api-anim";
 import Data from "./data";
 import Responsive from "./responsive";
+import Scroller from "./scroller";
 import Swatch from "./swatch";
 import "./why.css";
 
@@ -167,13 +169,34 @@ export default function Why() {
           succeed. Let’s create something amazing together.
         </p>
 
-        <h1
-          className="landing-h1"
-          style={{ textAlign: "right", marginTop: 10 }}
-        >
+        <Scroller />
+
+        <h1 className="landing-h1" style={{ marginTop: 10 }}>
           Not sure where to start?
         </h1>
-        <p style={{ textAlign: "right" }}>wip</p>
+        <p style={{ textAlign: "center" }}>
+          With all the frameworks available these days, countless blog posts,
+          and tech evangelists pulling you every which way, it's easy to get
+          lost in the sauce.{" "}
+          <b>
+            Deciding on the right technology stack, understanding the best
+            practices, and ensuring scalability can feel overwhelming,
+          </b>{" "}
+          especially if you're not deeply entrenched in the tech world.
+        </p>
+        <p style={{ textAlign: "center", marginTop: 7 }}>
+          <b>You don't have to navigate these waters alone.</b> Whether you're
+          just starting out or need to refine an existing project, our expertise
+          can help you cut through the noise and find the solution that truly
+          meets your needs.
+        </p>
+        <p style={{ textAlign: "center", marginTop: 7 }}>
+          Let’s simplify the process together.{" "}
+          <b>Book a free consultation with us today,</b> and we'll help you
+          chart the best path forward, ensuring your project is built on a solid
+          foundation that aligns with your goals.
+        </p>
+        <Booknow />
       </div>
     </section>
   );
