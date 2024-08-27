@@ -5,6 +5,7 @@ import {
   useEffect,
   DetailedHTMLProps,
   ImgHTMLAttributes,
+  createRef,
 } from "react";
 import { useDebouncedCallback } from "@mantine/hooks";
 import html2canvas from "html2canvas";
@@ -16,8 +17,11 @@ const PageInPage = ({
   DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
   "src"
 >) => {
-  const [imageSrc, setImageSrc] = useState("");
+  const [imageSrc, setImageSrc] = useState(
+    "/assets/logo/logo-1-light-w-bg.svg"
+  );
   const [didFirstLoad, setDidFirstLoad] = useState(false);
+  const imageRef = createRef<HTMLImageElement>();
 
   const captureVisibleWindow = useDebouncedCallback(async () => {
     const scrollX = window.scrollX;
@@ -40,18 +44,39 @@ const PageInPage = ({
   }, 300);
 
   useEffect(() => {
-    captureVisibleWindow();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !didFirstLoad) {
+          captureVisibleWindow();
+        }
+      },
+      {
+        root: null, // viewport
+        rootMargin: "-50px 0px 0px 0px", // no margin
+        threshold: 0, // 50% of target visible
+      }
+    );
+
+    const currentImageRef = imageRef.current;
+
+    if (currentImageRef) {
+      observer.observe(currentImageRef);
+    }
 
     window.addEventListener("resize", captureVisibleWindow);
 
     return () => {
+      if (currentImageRef) {
+        observer.unobserve(currentImageRef);
+      }
       window.removeEventListener("resize", captureVisibleWindow);
+      observer.disconnect();
     };
-  }, []);
+  }, [didFirstLoad]);
 
-  return imageSrc ? (
-    <img src={imageSrc} alt={alt ?? "Live View"} {...rest} />
-  ) : null;
+  return (
+    <img ref={imageRef} src={imageSrc} alt={alt ?? "Live View"} {...rest} />
+  );
 };
 
 export default PageInPage;
