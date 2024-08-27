@@ -37,7 +37,7 @@ export default function Page() {
   return (
     <>
       <PortfolioGrid />
-      <AdditionalContent />
+      <AdditionalContent ignoreSection="projects" />
     </>
   );
 }

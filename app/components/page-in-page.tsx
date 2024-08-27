@@ -24,21 +24,16 @@ const PageInPage = ({
   const imageRef = createRef<HTMLImageElement>();
 
   const captureVisibleWindow = useDebouncedCallback(async () => {
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
-
     html2canvas(document.getElementById("canvas") ?? document.body, {
       backgroundColor: null,
       width:
         document.getElementById("canvas")?.clientWidth ?? window.innerWidth,
       height: document.body.clientHeight,
-      scrollX: -scrollX,
-      scrollY: -scrollY,
     }).then((canvas) => {
       setImageSrc(canvas.toDataURL("image/png"));
       if (!didFirstLoad) {
         setDidFirstLoad(true);
-        captureVisibleWindow();
+        // captureVisibleWindow();
       }
     });
   }, 300);
@@ -51,9 +46,9 @@ const PageInPage = ({
         }
       },
       {
-        root: null, // viewport
-        rootMargin: "-50px 0px 0px 0px", // no margin
-        threshold: 0, // 50% of target visible
+        root: null,
+        rootMargin: "-200px 0px 0px 0px",
+        threshold: 0,
       }
     );
 

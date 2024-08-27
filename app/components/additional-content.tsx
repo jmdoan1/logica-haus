@@ -22,7 +22,7 @@ export default function AdditionalContent({
           <PortfolioGrid ignoreProject={ignoreProject} />
         </>
       ) : null}
-      {ignoreSection !== "projects" ? (
+      {ignoreSection !== "blog" ? (
         <>
           <h1 className="h1" style={{ textAlign: "left", marginTop: 20 }}>
             Blog Posts
