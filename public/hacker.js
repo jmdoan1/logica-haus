@@ -34,8 +34,7 @@ function hack(event) {
   const interval = setInterval(() => {
     event.target.innerText = event.target.dataset.value
       .split("")
-      .map((letter, index) => {
-        // if (letter === " ") return letter;
+      .map((_, index) => {
         if (index < iterations) {
           return event.target.dataset.value[index];
         }

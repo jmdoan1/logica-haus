@@ -3,6 +3,7 @@ import "./page.css";
 import VideoHero from "./components/landing/video-hero";
 import Script from "next/script";
 import Why from "./components/landing/why";
+import AdditionalContent from "./components/additional-content";
 
 export default function Page() {
   return (
@@ -55,9 +56,8 @@ export default function Page() {
         {/* <VideoHero src="/assets/landing/confused.mp4">
           <div className="filter"></div>
         </VideoHero> */}
-        <p className="mb-4">{`wip`}</p>
-        <div className="my-8">
-          <BlogPosts />
+        <div style={{ maxWidth: 1280, margin: "auto" }}>
+          <AdditionalContent />
         </div>
       </section>
     </>

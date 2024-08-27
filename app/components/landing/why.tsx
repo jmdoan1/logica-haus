@@ -115,7 +115,7 @@ export default function Why() {
           </div>
         </div>
 
-        <h1 className="landing-h1 shrink" style={{ textAlign: "left" }}>
+        <h1 className="h1shrink" style={{ textAlign: "left" }}>
           What kinds of projects do we take?
         </h1>
         <p>
@@ -169,7 +169,7 @@ export default function Why() {
           succeed. Let’s create something amazing together.
         </p>
 
-        <h1 className="landing-h1 shrink" style={{ marginTop: 10 }}>
+        <h1 className="h1shrink" style={{ marginTop: 10 }}>
           Not sure where to start?
         </h1>
         <Scroller />
