@@ -3,10 +3,10 @@
   --animation-duration: 5s;
 
   --background-color: #d55084;
-  --window-top: #334155;
-  --window-bar: #334155;
+  --window-top: var(--theme-color);
+  --window-bar: var(--theme-color);
   --window-content: #fff;
-  --window-background: #979797;
+  --window-background: #999;
   --button-color: #e20269;
 
   /* --window-width-1: 140px;

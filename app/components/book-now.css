@@ -58,7 +58,7 @@
   cursor: pointer;
   padding: 0.2em;
   /* background: #333; */
-  background: #334155;
+  background: var(--theme-color);
   z-index: 1;
   border: solid var(--border-width) transparent;
 }

@@ -1,5 +1,5 @@
 :root {
-  --data-color: #334155;
+  --data-color: var(--theme-color);
 }
 
 .data-container * {

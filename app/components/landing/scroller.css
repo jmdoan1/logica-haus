@@ -34,7 +34,7 @@
   gap: 0 0.2rem;
   color: #e2e8f0;
   font-size: 0.9rem;
-  background-color: #334155;
+  background-color: var(--theme-color);
   font-weight: bolder;
   border-radius: 0.4rem;
   padding: 0.7rem 1rem;
