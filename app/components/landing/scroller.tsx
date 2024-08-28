@@ -54,6 +54,7 @@ export default function Scroller() {
     "Webdev",
     "Websites",
     "Windows",
+    "Wordpress",
     "XAMPP",
     "XML",
   ].sort((a, b) => a.localeCompare(b));
