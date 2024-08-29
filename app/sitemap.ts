@@ -1,7 +1,7 @@
 import { getBlogPosts } from "app/blog/utils";
 import { projects } from "./components/portfolio-grid";
 
-export const baseUrl = "https://logica-haus.vercel.app";
+export const baseUrl = "https://www.logica.haus";
 
 export default async function sitemap() {
   let blogs = getBlogPosts().map((post) => ({
