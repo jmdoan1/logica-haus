@@ -47,9 +47,8 @@ export default function Page() {
       <h1 className="h1">Book a free consultation</h1>
       <Booknow />
       <br />
-      <br />
       <p className="or">OR</p>
-      <h1 className="h1">Send a message</h1>
+      <h1 className="h1">Send us a message</h1>
       <br />
       <form onSubmit={handleSubmit}>
         <div>

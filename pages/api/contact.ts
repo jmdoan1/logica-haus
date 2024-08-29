@@ -19,7 +19,7 @@ export default async function handler(
 
     const slackMessage = {
       channel: channelId,
-      text: `<@channel> \nNew contact form submission:\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`,
+      text: `New contact form submission:\n\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`,
     };
 
     try {

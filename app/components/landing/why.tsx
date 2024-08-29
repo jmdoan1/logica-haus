@@ -201,7 +201,31 @@ export default function Why() {
           and we'll help you chart the best path forward, ensuring your project
           is built on a solid foundation that aligns with your goals.
         </p>
+        <br />
         <Booknow />
+
+        <h1 className="h1 shrink" style={{ marginTop: 10 }}>
+          Who are we?
+        </h1>
+        <p>
+          LogicaHaus is a "one-man agency" led by a seasoned professional with
+          over a decade of experience across various facets of software
+          development. Despite being a solo operation, LogicaHaus leverages a
+          robust network of skilled designers and developers to tackle projects
+          of any size or complexity. This flexible approach allows us to scale
+          our resources to meet your specific needs, whether you're looking for
+          the personalized attention of a single freelancer or the comprehensive
+          support of a full development team.
+        </p>
+        <br />
+        <p>
+          By blending the agility of a freelancer with the collaborative power
+          of a broader team, LogicaHaus offers the perfect solution for
+          businesses and individuals alike. Whether you're launching a new
+          product, enhancing an existing platform, or need ongoing technical
+          support, LogicaHaus can adapt to your requirements, delivering
+          high-quality results with efficiency and precision.
+        </p>
       </div>
     </section>
   );

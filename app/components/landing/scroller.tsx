@@ -4,6 +4,7 @@ import "./scroller.css";
 export default function Scroller() {
   const skills = [
     ".NET",
+    "Agile",
     "Android",
     "Animations",
     "C",
@@ -19,6 +20,8 @@ export default function Scroller() {
     "JAMstack",
     "Java",
     "Javascript",
+    "Jira",
+    "Kanban",
     "Kotlin",
     "MacOS",
     "MaterialUI",
@@ -38,6 +41,7 @@ export default function Scroller() {
     "Python",
     "React",
     "ReactNative",
+    "Slack",
     "SPA",
     "SQL",
     "SQLite",
