@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     default: "LogicaHaus",
     template: "%s | LogicaHaus",
   },
-  description: "Custom Software Engineering Services",
+  description: "Custom-built Software Engineering Services",
   openGraph: {
     title: "LogicaHaus",
-    description: "Custom Software Engineering Services",
+    description: "Custom-built Software Engineering Services",
     url: baseUrl,
     siteName: "LogicaHaus",
     locale: "en_US",
@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     "custom",
     "bots",
     "scripts",
+    "Slack",
   ],
   robots: {
     index: true,

@@ -7,6 +7,7 @@ export default function Scroller() {
     "Agile",
     "Android",
     "Animations",
+    "Automation",
     "C",
     "C#",
     "C++",
