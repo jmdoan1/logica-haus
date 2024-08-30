@@ -1,3 +1,5 @@
+import NewTabLink from "app/components/new-tab-link";
+
 export default function Page() {
   const baseAssetUrl = "/assets/projects/scenepin";
   return (
@@ -67,19 +69,42 @@ export default function Page() {
       ScenePin, to leave us a review, and if you’re enjoying ScenePin, share it
       with a friend.
       <br />
+      <br />
       <h2 className="h2">Timeline</h2>
       <br />
       <p style={{ textAlign: "center" }}>
         <b>Project Start:</b> January 2022
       </p>
-      <br />
       <p style={{ textAlign: "center" }}>
         <b>Alpha Released:</b> May 2022
       </p>
       <br />
-      VIEW IN APP STORE
       <br />
-      VIEW IN GOOgle play STORE
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          placeContent: "center",
+          width: "100%",
+        }}
+      >
+        <NewTabLink
+          style={{ textAlign: "center" }}
+          href="https://apps.apple.com/us/app/scenepin/id1622468157"
+        >
+          <h2 className="h3">
+            <u>VIEW IN APP STORE</u>
+          </h2>
+        </NewTabLink>
+        <NewTabLink
+          style={{ textAlign: "center" }}
+          href="https://play.google.com/store/apps/details?id=com.doanworks.scenepin"
+        >
+          <h2 className="h3">
+            <u>VIEW IN GOOGLE PLAY STORE</u>
+          </h2>
+        </NewTabLink>
+      </div>
     </section>
   );
 }
