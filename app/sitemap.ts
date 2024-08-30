@@ -10,7 +10,7 @@ export default async function sitemap() {
   }));
 
   let projectUrls = projects.map((project) => ({
-    url: `${baseUrl}/blog/${project.slug}`,
+    url: `${baseUrl}/projects/${project.slug}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
