@@ -16,14 +16,15 @@ export const metadata: Metadata = {
     default: "LogicaHaus",
     template: "%s | LogicaHaus",
   },
-  description: "Custom-built Software Engineering Services",
+  description: "Bespoke Software Engineering Services",
   openGraph: {
     title: "LogicaHaus",
-    description: "Custom-built Software Engineering Services",
+    description: "Bespoke Software Engineering Services",
     url: baseUrl,
     siteName: "LogicaHaus",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/assets/logo/logo-1-light-w-bg" }],
   },
   keywords: [
     "LogicaHaus",

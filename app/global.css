@@ -37,6 +37,18 @@
   font-weight: bolder;
 }
 
+.h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 

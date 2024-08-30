@@ -84,7 +84,13 @@ export default function PortfolioGrid({ ignoreProject }: Props) {
   return (
     <section>
       <div className="grid">
-        <a href={githubUrl} className="item" key={"this-website"}>
+        <a
+          href={githubUrl}
+          className="item"
+          key={"this-website"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <PageInPage
             className="pip"
             style={{ objectFit: "cover", objectPosition: "50% 0%" }}
