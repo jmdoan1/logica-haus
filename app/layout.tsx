@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     siteName: "LogicaHaus",
     locale: "en_US",
     type: "website",
-    images: "/assets/og-image.png",
+    images: "/og-image.png",
   },
   twitter: {
     card: "summary_large_image",
-    images: "/assets/og-image.png",
+    images: "/og-image.png",
   },
   keywords: [
     "LogicaHaus",
