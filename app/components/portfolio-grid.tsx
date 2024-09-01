@@ -65,8 +65,8 @@ export const projects: Project[] = [
     scale: 1.7,
   },
   {
-    name: "Weight Calculator",
-    slug: "weight-calculator",
+    name: "QwickWeights",
+    slug: "qwickweights",
     scale: 1.7,
   },
   {

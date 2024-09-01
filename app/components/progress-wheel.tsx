@@ -13,8 +13,8 @@ export default function ProgressWheel() {
       <text
         x="50%"
         y="50%"
-        dominant-baseline="middle"
-        text-anchor="middle"
+        dominantBaseline="middle"
+        textAnchor="middle"
         className="progress-text"
       />
     </svg>
