@@ -5,14 +5,21 @@ import "./portfolio-grid.css";
 interface Project {
   name: string;
   slug: string;
-  scale?: number;
+  scale: number;
+  rotate?: number;
 }
 
 export const projects: Project[] = [
   {
+    name: "Mileage Quest",
+    slug: "mileage-quest",
+    scale: 1.65,
+  },
+  {
     name: "Spirated",
     slug: "spirated",
     scale: 1.45,
+    rotate: 10,
   },
   {
     name: "ScenePin",
@@ -28,6 +35,7 @@ export const projects: Project[] = [
     name: "Trivia Pal",
     slug: "trivia-pal",
     scale: 1.75,
+    rotate: 10,
   },
   {
     name: "Basket Counter",
@@ -99,12 +107,16 @@ export default function PortfolioGrid({ ignoreProject }: Props) {
         </a>
         {projects
           .filter((x) => x.slug !== ignoreProject)
-          .map(({ name, slug, scale }) => (
+          .map(({ name, slug, scale, rotate }) => (
             <a href={`/projects/${slug}`} className="item" key={slug}>
               <img
                 alt={slug}
                 src={`assets/projects/${slug}/preview.png`}
-                style={scale ? { transform: `scale(${scale})` } : {}}
+                style={{
+                  transform: `scale(${scale}) ${
+                    rotate ? `rotate(${rotate}deg)` : ""
+                  }`,
+                }}
               />
               <p>{name.toUpperCase()}</p>
             </a>

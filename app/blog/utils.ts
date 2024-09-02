@@ -49,7 +49,10 @@ function getMDXData(dir) {
         content,
       };
     })
-    .filter((x) => x.metadata.hidden !== "true");
+    .filter(
+      (x) =>
+        x.metadata.hidden !== "true" || process.env.NODE_ENV === "development"
+    );
 }
 
 export function getBlogPosts() {
@@ -81,7 +84,7 @@ export function formatDate(date: string, includeRelative = false) {
 
   let fullDate = targetDate.toLocaleString("en-us", {
     month: "short",
-    day: "numeric",
+    day: "2-digit",
     year: "numeric",
   });
 
