@@ -5,7 +5,7 @@ export default function Booknow() {
     <div className="book-container">
       <a
         className="border-animation"
-        href="https://calendly.com/jay-doan/consult"
+        href="https://calendly.com/logica-haus/30min"
         target="_blank"
         rel="noopener noreferrer"
       >
