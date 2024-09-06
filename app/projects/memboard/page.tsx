@@ -23,17 +23,14 @@ export default function Page() {
         />
       </div>
       <p>
-        <i>
-          "MemBoard: The Keyboard That Remembers For You" is a custom iOS
-          Keyboard that lets you save text for later use. Memboard presents
-          itself as a table view and a bottom row consisting of 5 buttons: next
-          keyboard, add to list, space bar, delete, return. Users can use any
-          keyboard to type the text they want to add, then switch to MemBoard,
-          press the "+" button, and the text will be added to their list. To
-          circumvent certain limitations to the amount of text a keyboard can
-          read, the app includes a feature to add any text, regardless of the
-          keyboard's capabilities.
-        </i>
+        <i>"MemBoard: The Keyboard That Remembers For You"</i> is a custom iOS
+        Keyboard that lets you save text for later use. Memboard presents itself
+        as a table view and a bottom row consisting of 5 buttons: next keyboard,
+        add to list, space bar, delete, return. Users can use any keyboard to
+        type the text they want to add, then switch to MemBoard, press the "+"
+        button, and the text will be added to their list. To circumvent certain
+        limitations to the amount of text a keyboard can read, the app includes
+        a feature to add any text, regardless of the keyboard's capabilities.
       </p>
       <br />
       <p>

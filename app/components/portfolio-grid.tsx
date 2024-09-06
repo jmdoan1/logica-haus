@@ -11,6 +11,11 @@ interface Project {
 
 export const projects: Project[] = [
   {
+    name: "KeepAwayk",
+    slug: "keepawayk",
+    scale: 1,
+  },
+  {
     name: "Mileage Quest",
     slug: "mileage-quest",
     scale: 1.65,
