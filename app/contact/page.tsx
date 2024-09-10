@@ -2,9 +2,11 @@
 
 import "./page.css";
 import Booknow from "app/components/book-now";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export default function Page() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,8 +33,9 @@ export default function Page() {
       });
 
       if (response.ok) {
-        alert("Message sent successfully");
-        setFormData({ name: "", email: "", message: "" });
+        // alert("Message sent successfully");
+        // setFormData({ name: "", email: "", message: "" });
+        router.push("/contact-thanks");
       } else {
         alert("Failed to send message");
       }
