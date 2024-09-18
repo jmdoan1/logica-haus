@@ -102,6 +102,14 @@ export default function Page() {
           </button>
         </div>
       </form>
+      <p className="or" style={{ margin: 15 }}>
+        OR
+      </p>
+      <h2 className="h2">Email: jay@logica.haus</h2>
+      <p className="or" style={{ margin: 15 }}>
+        OR
+      </p>
+      <h2 className="h2">Call: (904) 878-0128</h2>
     </section>
   );
 }

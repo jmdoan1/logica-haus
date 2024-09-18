@@ -55,6 +55,17 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <a
+          href="mailto: jay@logica.haus"
+          className="text-neutral-600 dark:text-neutral-300"
+        >
+          jay@logica.haus
+        </a>
+        <p className="ml-3 text-neutral-600 dark:text-neutral-300">
+          (904) 878-0128
+        </p>
+      </div>
       <p className="mt-8 text-neutral-600 dark:text-neutral-300">
         © {new Date().getFullYear()} MIT Licensed
       </p>
