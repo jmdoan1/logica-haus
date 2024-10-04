@@ -31,7 +31,7 @@ export default function Page() {
         My Portfolio
       </h1> */}
         <div style={{ marginTop: -120 }} />
-        <VideoHero src="/assets/landing/into-the-grid.webm">
+        <VideoHero src="/assets/landing/into-the-grid.mp4">
           <div
             className="content hero-bottom-right"
             style={{ textAlign: "right" }}
