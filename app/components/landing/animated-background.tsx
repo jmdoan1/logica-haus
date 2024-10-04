@@ -72,10 +72,12 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
       largeHeaderRef.current!.style.height = `${height}px`;
 
       const canvas = canvasRef.current;
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+      if (canvas) {
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+      }
 
       // Create points
       const points: Point[] = [];
