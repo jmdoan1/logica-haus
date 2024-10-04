@@ -29,7 +29,7 @@ export default function VideoHero({
         className="background-video"
         id={src}
       >
-        <source src={src} type="video/mp4" />
+        <source src={src} type="video/webm" />
         Your browser does not support the video tag.
       </video>
       {children}
