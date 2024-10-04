@@ -1,4 +1,3 @@
-import { BlogPosts } from "app/components/posts";
 import "./page.css";
 import VideoHero from "./components/landing/video-hero";
 import Script from "next/script";

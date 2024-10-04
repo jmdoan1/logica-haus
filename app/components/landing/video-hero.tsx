@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import "./video-hero.css";
+import AnimatedBackground from "./animated-background";
 
 export default function VideoHero({
   children,
@@ -21,7 +22,7 @@ export default function VideoHero({
 
   return (
     <div className="video-background-container">
-      <video
+      {/* <video
         autoPlay
         muted
         loop
@@ -31,8 +32,8 @@ export default function VideoHero({
       >
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
-      {children}
+      </video> */}
+      <AnimatedBackground>{children}</AnimatedBackground>
     </div>
   );
 }
