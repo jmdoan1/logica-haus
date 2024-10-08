@@ -1,5 +1,6 @@
 import NewTabLink from "app/components/new-tab-link";
 import List from "app/components/list";
+import "./page.css";
 
 export default function Page() {
   const baseAssetUrl = "/assets/projects/dashr";
@@ -10,17 +11,45 @@ export default function Page() {
         <img src={`${baseAssetUrl}/Screenshots.png`} />
       </div>
       <br />
-      <p>
-        <NewTabLink className="link">The original Dashr app</NewTabLink> was
-        built in 2017 using screen recording logic to include overlays in the
-        video, which is can no longer be feasibly maintained.
-        {/* <br /> */}
-        <i>
-          <b> This version</b> (built in 2024)
-        </i>{" "}
-        uses Apple's CoreAnimation library add the overlays from stored location
-        data after recording is finished
-      </p>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img
+          src={`${baseAssetUrl}/icon.svg`}
+          style={{
+            width: "50%",
+            aspectRatio: 1,
+            objectFit: "contain",
+          }}
+          className="small-screens-only"
+        />
+      </div>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <img
+          src={`${baseAssetUrl}/icon.svg`}
+          style={{ flex: 1, maxWidth: 150, objectFit: "contain" }}
+          className="med-screens-only"
+        />
+        <p style={{ flex: 2, margin: 10 }}>
+          <NewTabLink className="link">The original Dashr app</NewTabLink> was
+          built in 2017 using screen recording logic to include overlays in the
+          video, which is can no longer be feasibly maintained.
+          <i>
+            <b> This version</b> (built in 2024)
+          </i>{" "}
+          uses Apple's CoreAnimation library add the overlays from stored
+          location data after recording is finished
+        </p>
+        <img
+          src={`${baseAssetUrl}/icon.svg`}
+          style={{ flex: 1, maxWidth: 150, objectFit: "contain" }}
+          className="big-screens-only"
+        />
+      </div>
       <br />
       <p className="h3">
         They say the best camera is the one you have with you. Now you can say
