@@ -11,20 +11,25 @@ interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Dashr (v2)",
+    slug: "dashr",
+    scale: 1.45,
+  },
+  {
     name: "ScenePin",
     slug: "scenepin",
     scale: 1.45,
+  },
+  {
+    name: "KeepAwayk",
+    slug: "keepawayk",
+    scale: 1,
   },
   {
     name: "Spirated",
     slug: "spirated",
     scale: 1.45,
     rotate: 10,
-  },
-  {
-    name: "KeepAwayk",
-    slug: "keepawayk",
-    scale: 1,
   },
   {
     name: "Mileage Quest",
@@ -48,8 +53,8 @@ export const projects: Project[] = [
     scale: 1.7,
   },
   {
-    name: "Dashr",
-    slug: "dashr",
+    name: "Dashr (v1)",
+    slug: "dashr-og",
     scale: 1.7,
   },
   {

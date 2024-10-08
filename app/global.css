@@ -175,3 +175,9 @@ body {
   align-self: center;
   --dead-space: calc((100vw - 100%) / 2);
 }
+
+.link {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
