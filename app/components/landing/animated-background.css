@@ -11,7 +11,9 @@
 
 #large-header {
   background-image: url("/assets/landing/hero-bg.jpg");
-  /* background-image: url("/assets/landing/matrix.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .main-title {
