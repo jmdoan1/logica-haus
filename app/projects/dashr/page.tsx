@@ -112,7 +112,12 @@ export default function Page() {
       Download Dashr today and take control of your driving experience!
       <br />
       <br />
-      <h3 className="h3">Coming Soon!</h3>
+      <NewTabLink
+        href="https://apps.apple.com/us/app/dashr-the-dashcam-app/id6727001876"
+        className="link"
+      >
+        <h3 className="h3">View on the App Store</h3>
+      </NewTabLink>
     </section>
   );
 }
