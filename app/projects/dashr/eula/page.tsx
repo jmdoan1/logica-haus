@@ -1,4 +1,4 @@
-import styles from "./privacy.module.css";
+// Created with Furzburger account
 
 export default function page() {
   return (
