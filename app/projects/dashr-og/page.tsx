@@ -2,7 +2,7 @@ import NewTabLink from "app/components/new-tab-link";
 import "./page.css";
 
 export default function Page() {
-  const baseAssetUrl = "/assets/projects/dashr";
+  const baseAssetUrl = "/assets/projects/dashr-og";
   return (
     <section style={{ textAlign: "center" }}>
       <h1 className="h1">Dashr: The Dashcam App</h1>

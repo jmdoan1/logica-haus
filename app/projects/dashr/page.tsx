@@ -35,9 +35,11 @@ export default function Page() {
           className="med-screens-only"
         />
         <p style={{ flex: 2, margin: 10 }}>
-          <NewTabLink className="link">The original Dashr app</NewTabLink> was
-          built in 2017 using screen recording logic to include overlays in the
-          video, which is can no longer be feasibly maintained.
+          <NewTabLink className="link" href="/projects/dashr-og">
+            The original Dashr app
+          </NewTabLink>{" "}
+          was built in 2017 using screen recording logic to include overlays in
+          the video, which is can no longer be feasibly maintained.
           <i>
             <b> This version</b> (built in 2024)
           </i>{" "}
