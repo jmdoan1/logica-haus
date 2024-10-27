@@ -28,27 +28,31 @@ export default function Page() {
           className="small-screens-only"
         />
       </div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
         <img
           src={`${baseAssetUrl}/icon.svg`}
-          style={{ flex: 1, maxWidth: 150, objectFit: "contain" }}
+          style={{ flex: 1, maxWidth: "25%", objectFit: "contain" }}
           className="med-screens-only"
         />
-        <p style={{ flex: 2, margin: 10 }}>
-          <NewTabLink className="link" href="/projects/dashr-og">
-            The original Dashr app
-          </NewTabLink>{" "}
-          was built in 2017 using screen recording logic to include overlays in
-          the video, which is can no longer be feasibly maintained.
-          <i>
-            <b> This version</b> (built in 2024)
-          </i>{" "}
-          uses Apple's CoreAnimation library add the overlays from stored
-          location data after recording is finished
-        </p>
+        <iframe
+          width="650"
+          height="365.625"
+          src="https://www.youtube.com/embed/cfClw8Sk9do?si=_3bxDuYKlJ4WknXL"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
         <img
           src={`${baseAssetUrl}/icon.svg`}
-          style={{ flex: 1, maxWidth: 150, objectFit: "contain" }}
+          style={{ flex: 1, maxWidth: "25%", objectFit: "contain" }}
           className="big-screens-only"
         />
       </div>
@@ -120,6 +124,19 @@ export default function Page() {
       >
         <h3 className="h3">View on the App Store</h3>
       </NewTabLink>
+      <br />
+      <p style={{ flex: 2, margin: 10 }}>
+        <NewTabLink className="link" href="/projects/dashr-og">
+          The original Dashr app
+        </NewTabLink>{" "}
+        was built in 2017 using screen recording logic to include overlays in
+        the video, which is can no longer be feasibly maintained.
+        <i>
+          <b> This version</b> (built in 2024)
+        </i>{" "}
+        uses Apple's CoreAnimation library add the overlays from stored location
+        data after recording is finished
+      </p>
     </section>
   );
 }
