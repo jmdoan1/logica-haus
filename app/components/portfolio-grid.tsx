@@ -13,18 +13,18 @@ export const projects: Project[] = [
   {
     name: "Dashr (v2)",
     slug: "dashr",
-    scale: 1.45,
+    scale: 1.65,
   },
   {
     name: "ScenePin",
     slug: "scenepin",
     scale: 1.45,
   },
-  {
-    name: "KeepAwayk",
-    slug: "keepawayk",
-    scale: 1,
-  },
+  // {
+  //   name: "KeepAwayk",
+  //   slug: "keepawayk",
+  //   scale: 1,
+  // },
   {
     name: "Spirated",
     slug: "spirated",

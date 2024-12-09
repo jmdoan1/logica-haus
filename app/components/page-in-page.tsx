@@ -33,7 +33,6 @@ const PageInPage = ({
       setImageSrc(canvas.toDataURL("image/png"));
       if (!didFirstLoad) {
         setDidFirstLoad(true);
-        // captureVisibleWindow();
       }
     });
   }, 300);

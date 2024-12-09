@@ -18,6 +18,7 @@ export function BlogPosts() {
         })
         .map((post) => (
           <Link
+            prefetch={true}
             key={post.slug}
             className="flex flex-col space-y-1 mb-4"
             href={`/blog/${post.slug}`}
