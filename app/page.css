@@ -27,11 +27,11 @@
   font-size: 1.31rem;
   font-weight: 900;
   font-style: italic;
-  animation: enter-stage-left 6s linear;
+  animation: enter-stage-left 3s linear;
 }
 
 @keyframes enter-stage-left {
-  50% {
+  0% {
     transform: translate(calc(100% + 10vw));
   }
   100% {
@@ -56,8 +56,8 @@
   aspect-ratio: 1;
   object-fit: cover;
   object-position: 50% top;
-  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 1));
-  animation: spin linear 3s, creep linear 3s;
+  /* filter: drop-shadow(0 0 10px rgba(255, 165, 0, 1));
+  animation: spin linear 3s, creep linear 3s; */
 }
 
 @media (max-height: 720px) {

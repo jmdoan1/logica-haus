@@ -39,7 +39,7 @@ export default function Page() {
               LogicaHaus
             </h1>
             <p
-              className="sub-logica  hacker wait"
+              className="sub-logica hacker //wait"
               data-value="The logical home for your technical solutions"
               style={{ opacity: 0 }}
             >

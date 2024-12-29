@@ -1,5 +1,5 @@
 import Booknow from "../book-now";
-import ApiAnim from "./api-anim";
+// import ApiAnim from "./api-anim";
 import Data from "./data";
 import Responsive from "./responsive";
 import Scroller from "./scroller";
@@ -87,7 +87,7 @@ export default function Why() {
             </p>
           </div>
         </div>
-        <div className="benefit right-first">
+        {/* <div className="benefit right-first">
           <div className="c-left column" style={{ padding: 0 }}>
             <h2 className="h2">Seamless API Integrations</h2>
             <br />
@@ -113,7 +113,7 @@ export default function Why() {
           >
             <ApiAnim />
           </div>
-        </div>
+        </div> */}
 
         <h1 className="h1 shrink" style={{ textAlign: "left" }}>
           What kinds of projects do we take?
