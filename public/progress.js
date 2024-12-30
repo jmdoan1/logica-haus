@@ -18,14 +18,14 @@ function updateProgress() {
     progressText.innerHTML = `${scrollPercent}%`;
   }
 
-  const progressImg = document.querySelector(".pip");
-  if (progressImg) {
-    const imgScrollPercent = docHeight <= winHeight ? 0 : scrollPercent;
-    progressImg.style.setProperty(
-      "object-position",
-      `50% ${imgScrollPercent}%`
-    );
-  }
+  // const progressImg = document.querySelector(".pip");
+  // if (progressImg) {
+  //   const imgScrollPercent = docHeight <= winHeight ? 0 : scrollPercent;
+  //   progressImg.style.setProperty(
+  //     "object-position",
+  //     `50% ${imgScrollPercent}%`
+  //   );
+  // }
 }
 
 updateProgress();

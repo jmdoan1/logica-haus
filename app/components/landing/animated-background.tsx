@@ -192,7 +192,7 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
     };
 
     const animate = () => {
-      if (animateHeader) {
+      if (animateHeader && canvasRef.current) {
         const ctx = canvasRef.current!.getContext("2d");
         if (!ctx) return;
         ctx.clearRect(0, 0, width, height);

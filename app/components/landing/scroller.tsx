@@ -105,7 +105,7 @@ export default function Scroller() {
         >
           {getRanomizedList(2)}
         </div>
-        <div
+        {/* <div
           className="scroller-loop-slider"
           style={
             {
@@ -115,7 +115,7 @@ export default function Scroller() {
           }
         >
           {getRanomizedList(3)}
-        </div>
+        </div> */}
         <div className="scroller-fade"></div>
       </div>
     </div>

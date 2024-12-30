@@ -24,7 +24,7 @@ export default function Page() {
           }
         }
       `}</style>
-      <Script src="../hacker.js" strategy="afterInteractive" />
+      {/* <Script src="../hacker.js" strategy="afterInteractive" /> */}
       <section>
         {/* <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         My Portfolio

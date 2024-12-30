@@ -111,7 +111,10 @@ export default function PortfolioGrid({ ignoreProject }: Props) {
         >
           <PageInPage
             className="pip"
-            style={{ objectFit: "cover", objectPosition: "50% 0%" }}
+            style={{
+              objectFit: "cover",
+              // objectPosition: "50% 0%"
+            }}
           />
           <p>THIS WEBSITE</p>
         </a>

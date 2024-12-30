@@ -100,6 +100,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/assets/logo/logo-1-light-w-bg.svg" />
         <Script src="../progress.js" strategy="afterInteractive" />
+        {/* <Script src="../hacker.js" strategy="afterInteractive" /> */}
       </head>
       <body className="antialiased mx-4 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-4 flex flex-col px-2 md:px-0">
