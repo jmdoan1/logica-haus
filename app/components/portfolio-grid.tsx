@@ -7,6 +7,7 @@ interface Project {
   slug: string;
   scale: number;
   rotate?: number;
+  marginTop?: string;
 }
 
 export const projects: Project[] = [
@@ -14,6 +15,7 @@ export const projects: Project[] = [
     name: "Dashr (v2)",
     slug: "dashr",
     scale: 1.65,
+    marginTop: "5%",
   },
   {
     name: "ScenePin",
@@ -120,7 +122,7 @@ export default function PortfolioGrid({ ignoreProject }: Props) {
         </a>
         {projects
           .filter((x) => x.slug !== ignoreProject)
-          .map(({ name, slug, scale, rotate }) => (
+          .map(({ name, slug, scale, rotate, marginTop }) => (
             <a href={`/projects/${slug}`} className="item" key={slug}>
               <img
                 alt={slug}
@@ -129,6 +131,7 @@ export default function PortfolioGrid({ ignoreProject }: Props) {
                   transform: `scale(${scale}) ${
                     rotate ? `rotate(${rotate}deg)` : ""
                   }`,
+                  marginTop,
                 }}
               />
               <p>{name.toUpperCase()}</p>
