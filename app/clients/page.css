@@ -1,5 +1,0 @@
-.user-button-wrapper {
-  display: inline-block; /* Ensure the wrapper fits around the button */
-  transform: scale(2); /* Adjust the scale to your desired size */
-  transform-origin: center; /* Make sure scaling happens from the center */
-}

@@ -8,6 +8,7 @@
   "dependencies": {
     "@clerk/nextjs": "^6.9.11",
     "@mantine/hooks": "^7.12.1",
+    "@supabase/supabase-js": "^2.47.15",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "^22.0.3",
     "@types/react": "^18.3.3",

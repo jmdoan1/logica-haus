@@ -1,6 +1,5 @@
 import { OrganizationList, UserButton, UserProfile } from "@clerk/nextjs";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import "./page.css";
 
 export default async function Page() {
   // Get the userId from auth() -- if null, the user is not signed in

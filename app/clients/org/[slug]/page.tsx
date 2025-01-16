@@ -1,10 +1,6 @@
 "use client";
-import {
-  OrganizationProfile,
-  OrganizationSwitcher,
-  useOrganization,
-} from "@clerk/nextjs";
-import { useEffect } from "react";
+import { OrganizationSwitcher, useOrganization } from "@clerk/nextjs";
+import OrganizationTables from "../../OrgTables";
 
 export default function Page() {
   const org = useOrganization();
@@ -27,8 +23,7 @@ export default function Page() {
           />
         </div>
       </div>
-      {!org.isLoaded && "LOADING"}
-      {org.organization?.id}
+      <OrganizationTables orgId={org.organization?.id ?? ""} />
     </section>
   );
 }
