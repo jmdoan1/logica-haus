@@ -15,6 +15,7 @@ import {
   GridRowId,
   GridActionsCellItem,
 } from "@mui/x-data-grid";
+import { Popover } from "@mui/material";
 
 type Props = {
   orgId: string;
@@ -29,6 +30,8 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
   const [newRowValues, setNewRowValues] = useState<
     Record<string, Record<string, any>>
   >({});
+  const [anchorEl, setAnchorEl] = useState<HTMLImageElement | null>(null);
+  const [popoverId, setPopoverId] = useState<GridRowId>();
 
   useEffect(() => {
     if (orgId !== "") {
@@ -170,7 +173,20 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
           editable: true, // Allow inline editing
           renderCell: (params) => {
             if (field === "image_url") {
-              // Handle image_url column
+              const handlePopoverOpen = (
+                event: React.MouseEvent<HTMLImageElement>
+              ) => {
+                setAnchorEl(event.currentTarget);
+                setPopoverId(params.id);
+              };
+
+              const handlePopoverClose = () => {
+                setAnchorEl(null);
+                setPopoverId(undefined);
+              };
+
+              const isPopoverOpen = Boolean(anchorEl);
+
               return (
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input
@@ -187,11 +203,46 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
                     style={{ marginRight: 10, flex: 1, border: "none" }}
                   />
                   {params.value && (
-                    <img
-                      src={params.value as string}
-                      alt="Preview"
-                      style={{ width: "50px", height: "auto" }}
-                    />
+                    <div onMouseLeave={handlePopoverClose}>
+                      <img
+                        src={params.value as string}
+                        alt="Preview"
+                        style={{
+                          width: "50px",
+                          height: "auto",
+                          cursor: "pointer",
+                        }}
+                        onMouseEnter={handlePopoverOpen}
+                      />
+                      <Popover
+                        open={popoverId === params.id}
+                        anchorEl={anchorEl}
+                        onClose={handlePopoverClose}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                        transformOrigin={{
+                          vertical: "center",
+                          horizontal: "center",
+                        }}
+                        slotProps={{
+                          paper: {
+                            onMouseLeave: handlePopoverClose,
+                          },
+                        }}
+                      >
+                        <img
+                          src={params.value as string}
+                          alt="Large Preview"
+                          style={{
+                            width: "300px",
+                            height: "auto",
+                            display: "block",
+                          }}
+                        />
+                      </Popover>
+                    </div>
                   )}
                 </div>
               );
