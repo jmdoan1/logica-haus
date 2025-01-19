@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { MdDelete, MdSave } from "react-icons/md";
 import {
   addRow,
   deleteRow,
@@ -8,12 +9,18 @@ import {
   TableRow,
   updateRow,
 } from "supa";
+import {
+  DataGrid,
+  GridColDef,
+  GridRowId,
+  GridActionsCellItem,
+} from "@mui/x-data-grid";
 
 type Props = {
   orgId: string;
 };
 
-const OrganizationTables: React.FC<Props> = ({ orgId }) => {
+const OrgTables: React.FC<Props> = ({ orgId }) => {
   const [tables, setTables] = useState<OrgTable[]>([]);
   const [tableData, setTableData] = useState<Record<string, TableRow[]>>({});
   const [modifiedRows, setModifiedRows] = useState<Record<string, Set<number>>>(
@@ -51,7 +58,7 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
     table: string,
     rowId: number,
     field: string,
-    value: string | number
+    value: any
   ) => {
     setTableData((prev) => ({
       ...prev,
@@ -109,14 +116,19 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
   };
 
   const handleDeleteRow = async (table: string, rowId: number) => {
-    try {
-      await deleteRow(table, rowId);
-      setTableData((prev) => ({
-        ...prev,
-        [table]: prev[table].filter((row) => row.id !== rowId),
-      }));
-    } catch (error) {
-      window.alert(`Failed to delete row ${rowId} in ${table}.`);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (confirmed) {
+      try {
+        await deleteRow(table, rowId);
+        setTableData((prev) => ({
+          ...prev,
+          [table]: prev[table].filter((row) => row.id !== rowId),
+        }));
+      } catch (error) {
+        window.alert(`Failed to delete row ${rowId} in ${table}.`);
+      }
     }
   };
 
@@ -132,128 +144,201 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
 
   return (
     <section>
-      {tables.map(({ table_name, display_name }) => (
-        <div key={table_name} style={{ marginTop: 50 }}>
-          <h2 className="h2">{display_name}</h2>
-          <table>
-            <thead>
-              <tr>
-                {Object.keys(tableData[table_name]?.[0]?.fields || {}).map(
-                  (field) => (
-                    <th key={field}>{field}</th>
-                  )
-                )}
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableData[table_name]?.map(({ id, fields }) => (
-                <tr key={id}>
-                  {Object.entries(fields).map(([field, value]) => (
-                    <td key={field}>
-                      {field === "image_url" ? (
-                        <div style={{ display: "flex", flexDirection: "row" }}>
+      {tables.map(({ table_name, display_name }) => {
+        const rows = tableData[table_name]?.map(({ id, fields }) => ({
+          id,
+          ...fields,
+        }));
+
+        // Generate columns dynamically based on the first row
+        const columns: GridColDef[] = Object.keys(
+          tableData[table_name]?.[0]?.fields || {}
+        ).map((field) => ({
+          field,
+          headerName: field,
+          flex: 1,
+          editable: true, // Allow inline editing
+        }));
+
+        // Add custom actions column
+        columns.push({
+          field: "actions",
+          headerName: "Actions",
+          type: "actions",
+          getActions: ({ id }: { id: GridRowId }) => [
+            <GridActionsCellItem
+              label="Save"
+              onClick={() => handleSave(table_name, Number(id))}
+              icon={<MdSave />}
+              disabled={!modifiedRows[table_name]?.has(Number(id))}
+            />,
+            <GridActionsCellItem
+              label="Delete"
+              onClick={() => handleDeleteRow(table_name, Number(id))}
+              icon={<MdDelete />}
+            />,
+          ],
+        });
+
+        return (
+          <div>
+            <div key={table_name} style={{ marginTop: 50 }}>
+              <h2 className="h2">{display_name}</h2>
+              <table>
+                <thead>
+                  <tr>
+                    {Object.keys(tableData[table_name]?.[0]?.fields || {}).map(
+                      (field) => (
+                        <th key={field}>{field}</th>
+                      )
+                    )}
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData[table_name]?.map(({ id, fields }) => (
+                    <tr key={id}>
+                      {Object.entries(fields).map(([field, value]) => (
+                        <td key={field}>
+                          {field === "image_url" ? (
+                            <div
+                              style={{ display: "flex", flexDirection: "row" }}
+                            >
+                              <input
+                                type={
+                                  typeof value === "number" ? "number" : "text"
+                                }
+                                value={value}
+                                onChange={(e) =>
+                                  handleFieldChange(
+                                    table_name,
+                                    id,
+                                    field,
+                                    e.target.value
+                                  )
+                                }
+                              />
+                              <img
+                                src={value as string}
+                                alt="Preview"
+                                style={{ width: "100px", height: "auto" }}
+                              />
+                            </div>
+                          ) : (
+                            <input
+                              type={
+                                typeof value === "number" ? "number" : "text"
+                              }
+                              value={value}
+                              onChange={(e) =>
+                                handleFieldChange(
+                                  table_name,
+                                  id,
+                                  field,
+                                  e.target.value
+                                )
+                              }
+                            />
+                          )}
+                        </td>
+                      ))}
+                      <td>
+                        <button
+                          onClick={() => {
+                            console.log("save");
+                            handleSave(table_name, id);
+                          }}
+                          disabled={!modifiedRows[table_name]?.has(id)}
+                          style={{
+                            marginRight: 10,
+                            marginLeft: 10,
+                            cursor: modifiedRows[table_name]?.has(id)
+                              ? "pointer"
+                              : undefined,
+                            color: !modifiedRows[table_name]?.has(id)
+                              ? "gray"
+                              : undefined,
+                          }}
+                        >
+                          Save
+                        </button>
+                        <button
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            handleDeleteRow(table_name, id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                  {/* Empty row for adding a new row */}
+                  <tr>
+                    {Object.keys(tableData[table_name]?.[0]?.fields || {}).map(
+                      (field) => (
+                        <td key={field}>
                           <input
-                            type={typeof value === "number" ? "number" : "text"}
-                            value={value}
+                            type="text"
+                            placeholder={`Enter ${field}`}
+                            value={newRowValues[table_name]?.[field] || ""}
                             onChange={(e) =>
-                              handleFieldChange(
+                              handleNewRowChange(
                                 table_name,
-                                id,
                                 field,
                                 e.target.value
                               )
                             }
                           />
-                          <img
-                            src={value as string}
-                            alt="Preview"
-                            style={{ width: "100px", height: "auto" }}
-                          />
-                        </div>
-                      ) : (
-                        <input
-                          type={typeof value === "number" ? "number" : "text"}
-                          value={value}
-                          onChange={(e) =>
-                            handleFieldChange(
-                              table_name,
-                              id,
-                              field,
-                              e.target.value
-                            )
-                          }
-                        />
-                      )}
+                        </td>
+                      )
+                    )}
+                    <td>
+                      <button
+                        style={{ marginLeft: 10, cursor: "pointer" }}
+                        onClick={() => handleAddRow(table_name)}
+                      >
+                        Add
+                      </button>
                     </td>
-                  ))}
-                  <td>
-                    <button
-                      onClick={() => {
-                        console.log("save");
-                        handleSave(table_name, id);
-                      }}
-                      disabled={!modifiedRows[table_name]?.has(id)}
-                      style={{
-                        marginRight: 10,
-                        marginLeft: 10,
-                        cursor: modifiedRows[table_name]?.has(id)
-                          ? "pointer"
-                          : undefined,
-                        color: !modifiedRows[table_name]?.has(id)
-                          ? "gray"
-                          : undefined,
-                      }}
-                    >
-                      Save
-                    </button>
-                    <button
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        const confirmed = window.confirm(
-                          "Are you sure you want to delete this item?"
-                        );
-                        if (confirmed) {
-                          handleDeleteRow(table_name, id);
-                        }
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {/* Empty row for adding a new row */}
-              <tr>
-                {Object.keys(tableData[table_name]?.[0]?.fields || {}).map(
-                  (field) => (
-                    <td key={field}>
-                      <input
-                        type="text"
-                        placeholder={`Enter ${field}`}
-                        value={newRowValues[table_name]?.[field] || ""}
-                        onChange={(e) =>
-                          handleNewRowChange(table_name, field, e.target.value)
-                        }
-                      />
-                    </td>
-                  )
-                )}
-                <td>
-                  <button
-                    style={{ marginLeft: 10, cursor: "pointer" }}
-                    onClick={() => handleAddRow(table_name)}
-                  >
-                    Add
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {/* TABLE TWO */}
+            {/* TABLE TWO */}
+            {/* TABLE TWO */}
+            {/* TABLE TWO */}
+            {/* TABLE TWO */}
+            {/* TABLE TWO */}
+            <div key={table_name + "_2"} style={{ marginTop: 50 }}>
+              <h2 className="h2">{display_name}</h2>
+              <div style={{ width: "100%", backgroundColor: "white" }}>
+                <DataGrid
+                  rows={rows || []}
+                  columns={columns}
+                  processRowUpdate={(newRow) => {
+                    const { id, ...fields } = newRow;
+                    for (const [key, value] of Object.entries(fields)) {
+                      console.log(`Key: ${key}, Value: ${value}`);
+                      handleFieldChange(table_name, id, key, value);
+                    }
+                    return newRow;
+                  }}
+                />
+                <button
+                  style={{ marginTop: 10, color: "black" }}
+                  onClick={() => handleAddRow(table_name)}
+                >
+                  Add New Row
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 };
 
-export default OrganizationTables;
+export default OrgTables;

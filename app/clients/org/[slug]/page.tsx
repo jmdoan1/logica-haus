@@ -1,6 +1,7 @@
 "use client";
 import { OrganizationSwitcher, useOrganization } from "@clerk/nextjs";
-import OrganizationTables from "../../OrgTables";
+import OrgDataTables from "../../OrgDataTables";
+import OrgTables from "app/clients/OrgTables";
 
 export default function Page() {
   const org = useOrganization();
@@ -24,7 +25,8 @@ export default function Page() {
           />
         </div>
       </div>
-      <OrganizationTables orgId={org.organization?.id ?? ""} />
+      <OrgDataTables orgId={org.organization?.id ?? ""} />
+      <OrgTables orgId={org.organization?.id ?? ""} />
     </section>
   );
 }
