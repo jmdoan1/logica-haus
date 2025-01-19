@@ -22,7 +22,6 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
   const [newRowValues, setNewRowValues] = useState<
     Record<string, Record<string, any>>
   >({});
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (orgId !== "") {
@@ -72,35 +71,40 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
 
   const handleSave = async (table: string, rowId: number) => {
     const row = tableData[table].find((row) => row.id === rowId);
-    if (row) {
-      try {
-        await updateRow(table, rowId, row.fields);
-        setModifiedRows((prev) => {
-          const updatedSet = new Set(prev[table]);
-          updatedSet.delete(rowId);
-          return { ...prev, [table]: updatedSet };
-        });
-      } catch (error) {
-        setErrorMessage(`Failed to save row ${rowId} in ${table}.`);
-      }
+    if (!row) return;
+
+    try {
+      await updateRow(table, rowId, row.fields);
+
+      setModifiedRows((prev) => {
+        const updatedSet = new Set(prev[table]);
+        updatedSet.delete(rowId);
+        return { ...prev, [table]: updatedSet };
+      });
+    } catch (error) {
+      console.error(`Failed to save row ${rowId} in ${table}:`, error);
+
+      window.alert(`Failed to save changes: ${error.message || error}`);
     }
   };
 
   const handleAddRow = async (table: string) => {
-    const newRow = newRowValues[table]; // Get values from state
+    const newRow = newRowValues[table];
+
     try {
       await addRow(table, newRow);
+
       const updatedData = await fetchTableData(table);
       setTableData((prev) => ({ ...prev, [table]: updatedData }));
 
-      // Reset new row values
       const fields = Object.keys(newRow);
       setNewRowValues((prev) => ({
         ...prev,
         [table]: fields.reduce((acc, field) => ({ ...acc, [field]: "" }), {}),
       }));
     } catch (error) {
-      setErrorMessage(`Failed to add a new row to ${table}.`);
+      console.error(`Failed to add a new row to ${table}:`, error);
+      window.alert(`Failed to add a new row: ${error.message || error}`);
     }
   };
 
@@ -112,7 +116,7 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
         [table]: prev[table].filter((row) => row.id !== rowId),
       }));
     } catch (error) {
-      setErrorMessage(`Failed to delete row ${rowId} in ${table}.`);
+      window.alert(`Failed to delete row ${rowId} in ${table}.`);
     }
   };
 
@@ -127,11 +131,10 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
   };
 
   return (
-    <div>
-      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+    <section>
       {tables.map(({ table_name, display_name }) => (
-        <div key={table_name}>
-          <h2>{display_name}</h2>
+        <div key={table_name} style={{ marginTop: 50 }}>
+          <h2 className="h2">{display_name}</h2>
           <table>
             <thead>
               <tr>
@@ -249,7 +252,7 @@ const OrganizationTables: React.FC<Props> = ({ orgId }) => {
           </table>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

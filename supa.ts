@@ -50,6 +50,7 @@ export async function addRow(
 
   if (error) {
     console.error(`Error adding row to ${tableName}:`, error);
+    throw new Error(error.message, error);
   }
 }
 
@@ -65,6 +66,7 @@ export async function updateRow(
 
   if (error) {
     console.error(`Error updating row ${rowId} in ${tableName}:`, error);
+    throw new Error(error.message, error);
   }
 }
 
@@ -76,5 +78,6 @@ export async function deleteRow(
 
   if (error) {
     console.error(`Error deleting row ${rowId} in ${tableName}:`, error);
+    throw new Error(error.message, error);
   }
 }
