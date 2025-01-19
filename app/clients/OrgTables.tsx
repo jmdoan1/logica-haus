@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MdDelete, MdSave } from "react-icons/md";
+import { MdAdd, MdDelete, MdSave } from "react-icons/md";
 import {
   addRow,
   deleteRow,
@@ -145,10 +145,20 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
   return (
     <section>
       {tables.map(({ table_name, display_name }) => {
-        const rows = tableData[table_name]?.map(({ id, fields }) => ({
-          id,
-          ...fields,
-        }));
+        const rows = [
+          ...((tableData[table_name] || []) as TableRow[]).map(
+            ({ id, fields }) => ({
+              id,
+              ...fields,
+            })
+          ),
+
+          // Add a special row for adding new data
+          {
+            id: "NewRow",
+            ...newRowValues[table_name],
+          },
+        ];
 
         // Generate columns dynamically based on the first row
         const columns: GridColDef[] = Object.keys(
@@ -165,19 +175,28 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
           field: "actions",
           headerName: "Actions",
           type: "actions",
-          getActions: ({ id }: { id: GridRowId }) => [
-            <GridActionsCellItem
-              label="Save"
-              onClick={() => handleSave(table_name, Number(id))}
-              icon={<MdSave />}
-              disabled={!modifiedRows[table_name]?.has(Number(id))}
-            />,
-            <GridActionsCellItem
-              label="Delete"
-              onClick={() => handleDeleteRow(table_name, Number(id))}
-              icon={<MdDelete />}
-            />,
-          ],
+          getActions: ({ id }: { id: GridRowId }) =>
+            id === "NewRow"
+              ? [
+                  <GridActionsCellItem
+                    label="Add"
+                    onClick={() => handleAddRow(table_name)}
+                    icon={<MdAdd />}
+                  />,
+                ]
+              : [
+                  <GridActionsCellItem
+                    label="Save"
+                    onClick={() => handleSave(table_name, Number(id))}
+                    icon={<MdSave />}
+                    disabled={!modifiedRows[table_name]?.has(Number(id))}
+                  />,
+                  <GridActionsCellItem
+                    label="Delete"
+                    onClick={() => handleDeleteRow(table_name, Number(id))}
+                    icon={<MdDelete />}
+                  />,
+                ],
         });
 
         return (
@@ -319,19 +338,19 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
                   columns={columns}
                   processRowUpdate={(newRow) => {
                     const { id, ...fields } = newRow;
-                    for (const [key, value] of Object.entries(fields)) {
-                      console.log(`Key: ${key}, Value: ${value}`);
-                      handleFieldChange(table_name, id, key, value);
+                    if (id === "NewRow") {
+                      setNewRowValues((prev) => ({
+                        ...prev,
+                        [table_name]: fields,
+                      }));
+                    } else {
+                      for (const [field, value] of Object.entries(fields)) {
+                        handleFieldChange(table_name, Number(id), field, value);
+                      }
                     }
                     return newRow;
                   }}
                 />
-                <button
-                  style={{ marginTop: 10, color: "black" }}
-                  onClick={() => handleAddRow(table_name)}
-                >
-                  Add New Row
-                </button>
               </div>
             </div>
           </div>
