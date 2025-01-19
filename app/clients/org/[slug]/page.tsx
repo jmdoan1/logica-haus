@@ -15,6 +15,7 @@ export default function Page() {
             display: "inline-block",
             transform: "scale(2)",
             transformOrigin: "center",
+            backgroundColor: "rgba(255,255,255,0.35)",
           }}
         >
           <OrganizationSwitcher
