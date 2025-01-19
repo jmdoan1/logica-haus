@@ -168,6 +168,38 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
           headerName: field,
           flex: 1,
           editable: true, // Allow inline editing
+          renderCell: (params) => {
+            if (field === "image_url") {
+              // Handle image_url column
+              return (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input
+                    type="text"
+                    value={params.value || ""}
+                    onChange={(e) =>
+                      handleFieldChange(
+                        table_name,
+                        params.id as number,
+                        field,
+                        e.target.value
+                      )
+                    }
+                    style={{ marginRight: 10, flex: 1, border: "none" }}
+                  />
+                  {params.value && (
+                    <img
+                      src={params.value as string}
+                      alt="Preview"
+                      style={{ width: "50px", height: "auto" }}
+                    />
+                  )}
+                </div>
+              );
+            }
+
+            // Default rendering for other fields
+            return params.value;
+          },
         }));
 
         // Add custom actions column
