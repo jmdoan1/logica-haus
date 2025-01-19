@@ -54,6 +54,15 @@ export default function Footer() {
             <p className="ml-2 h-7">view source</p>
           </a>
         </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            href={"/clients"}
+          >
+            <ArrowIcon />
+            <p className="ml-2 h-7">client portal</p>
+          </a>
+        </li>
       </ul>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <a
