@@ -135,16 +135,6 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
     }
   };
 
-  const handleNewRowChange = (table: string, field: string, value: string) => {
-    setNewRowValues((prev) => ({
-      ...prev,
-      [table]: {
-        ...prev[table],
-        [field]: value,
-      },
-    }));
-  };
-
   return (
     <section>
       {tables.map(({ table_name, display_name }) => {
@@ -184,8 +174,6 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
                 setAnchorEl(null);
                 setPopoverId(undefined);
               };
-
-              const isPopoverOpen = Boolean(anchorEl);
 
               return (
                 <div style={{ display: "flex", alignItems: "center" }}>
