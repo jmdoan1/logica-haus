@@ -238,8 +238,6 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
                 </div>
               );
             } else if (["date", "date_start", "date_end"].includes(field)) {
-              // Render a date/time picker for "date" fields
-              console.log(`DATE: ${params.value as Date}`);
               return (
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DateTimePicker

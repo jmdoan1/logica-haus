@@ -15,10 +15,16 @@ export type TableRow = {
 };
 
 export async function fetchOrgTables(orgId: string): Promise<OrgTable[]> {
-  const { data, error } = await supabase
+  let query = supabase
     .from("org_tables")
     .select("table_name, display_name")
     .eq("org_id", `${orgId}`);
+
+  if (process.env.NODE_ENV === "production") {
+    query = query.eq("prod", true);
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     console.error("Error fetching tables:", error);
