@@ -46,8 +46,6 @@ export async function fetchTableSchema(
     return [];
   }
 
-  console.log({ schema: data });
-
   return data as { column_name: string; data_type: string }[];
 }
 
