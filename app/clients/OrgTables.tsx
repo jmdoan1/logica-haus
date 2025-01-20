@@ -5,6 +5,7 @@ import {
   deleteRow,
   fetchOrgTables,
   fetchTableData,
+  fetchTableSchema, // Import the new function
   OrgTable,
   TableRow,
   updateRow,
@@ -27,6 +28,9 @@ type Props = {
 const OrgTables: React.FC<Props> = ({ orgId }) => {
   const [tables, setTables] = useState<OrgTable[]>([]);
   const [tableData, setTableData] = useState<Record<string, TableRow[]>>({});
+  const [tableSchemas, setTableSchemas] = useState<
+    Record<string, { column_name: string; data_type: string }[]>
+  >({});
   const [modifiedRows, setModifiedRows] = useState<Record<string, Set<number>>>(
     {}
   );
@@ -43,12 +47,16 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
         setTables(fetchedTables);
 
         const data: Record<string, TableRow[]> = {};
+        const schemas: Record<string, any[]> = {};
+
         for (const { table_name } of fetchedTables) {
           data[table_name] = await fetchTableData(table_name);
+          schemas[table_name] = await fetchTableSchema(table_name);
         }
-        setTableData(data);
 
-        // Initialize modified rows for each table
+        setTableData(data);
+        setTableSchemas(schemas);
+
         const modified: Record<string, Set<number>> = {};
         fetchedTables.forEach(({ table_name }) => {
           modified[table_name] = new Set();
@@ -141,6 +149,7 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
   return (
     <section>
       {tables.map(({ table_name, display_name }) => {
+        const schema = tableSchemas[table_name] || [];
         const rows = [
           ...((tableData[table_name] || []) as TableRow[]).map(
             ({ id, fields }) => ({
@@ -156,119 +165,155 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
           },
         ];
 
-        // Generate columns dynamically based on the first row
-        const columns: GridColDef[] = Object.keys(
-          tableData[table_name]?.[0]?.fields || {}
-        ).map((field) => ({
-          field,
-          headerName: field,
-          flex: 1,
-          editable: true, // Allow inline editing
-          renderCell: (params) => {
-            if (field === "image_url") {
-              const handlePopoverOpen = (
-                event: React.MouseEvent<HTMLImageElement>
-              ) => {
-                setAnchorEl(event.currentTarget);
-                setPopoverId(params.id);
-              };
+        // Generate columns dynamically based on the schema
+        const columns: GridColDef[] = schema
+          .filter((col) => col.column_name !== "id")
+          .map(({ column_name, data_type }) => ({
+            field: column_name,
+            headerName: column_name,
+            flex: 1,
+            editable: true, // Allow inline editing
+            renderCell: (params) => {
+              if (column_name === "image_url") {
+                const handlePopoverOpen = (
+                  event: React.MouseEvent<HTMLImageElement>
+                ) => {
+                  setAnchorEl(event.currentTarget);
+                  setPopoverId(params.id);
+                };
 
-              const handlePopoverClose = () => {
-                setAnchorEl(null);
-                setPopoverId(undefined);
-              };
+                const handlePopoverClose = () => {
+                  setAnchorEl(null);
+                  setPopoverId(undefined);
+                };
 
-              return (
-                <div style={{ display: "flex", alignItems: "center" }}>
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      width: "100%",
+                    }}
+                  >
+                    <input
+                      type={data_type === "integer" ? "number" : "text"}
+                      value={params.value || ""}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          table_name,
+                          Number(params.id),
+                          column_name,
+                          e.target.value
+                        )
+                      }
+                      style={{ marginRight: 10, flex: 1, border: "none" }}
+                    />
+                    {params.value && (
+                      <div onMouseLeave={handlePopoverClose}>
+                        <img
+                          src={params.value as string}
+                          alt="Preview"
+                          style={{
+                            width: "50px",
+                            height: "auto",
+                            cursor: "pointer",
+                          }}
+                          onMouseEnter={handlePopoverOpen}
+                        />
+                        <Popover
+                          open={popoverId === params.id}
+                          anchorEl={anchorEl}
+                          onClose={handlePopoverClose}
+                          anchorOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                          }}
+                          transformOrigin={{
+                            vertical: "center",
+                            horizontal: "center",
+                          }}
+                          slotProps={{
+                            paper: {
+                              onMouseLeave: handlePopoverClose,
+                            },
+                          }}
+                        >
+                          <img
+                            src={params.value as string}
+                            alt="Large Preview"
+                            style={{
+                              width: "300px",
+                              height: "auto",
+                              display: "block",
+                            }}
+                          />
+                        </Popover>
+                      </div>
+                    )}
+                  </div>
+                );
+              } else if (data_type === "timestamp with time zone") {
+                return (
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DateTimePicker
+                      value={params.value ? new Date(params.value) : null}
+                      onChange={(val) => {
+                        if (params.id === "NewRow") {
+                          setNewRowValues((prev) => ({
+                            ...prev,
+                            [table_name]: {
+                              ...prev[table_name],
+                              [column_name]: val?.toISOString() || "",
+                            },
+                          }));
+                        } else {
+                          handleFieldChange(
+                            table_name,
+                            Number(params.id),
+                            column_name,
+                            val?.toISOString() || ""
+                          );
+                        }
+                      }}
+                    />
+                  </LocalizationProvider>
+                );
+              } else if (data_type === "boolean") {
+                // Render a checkbox for boolean fields
+                return (
                   <input
-                    type="text"
+                    type="checkbox"
+                    checked={params.value || false}
+                    onChange={(e) =>
+                      handleFieldChange(
+                        table_name,
+                        Number(params.id),
+                        column_name,
+                        e.target.checked
+                      )
+                    }
+                  />
+                );
+              } else {
+                // Default input for other types
+                return (
+                  <input
+                    type={data_type === "integer" ? "number" : "text"}
                     value={params.value || ""}
                     onChange={(e) =>
                       handleFieldChange(
                         table_name,
-                        params.id as number,
-                        field,
+                        Number(params.id),
+                        column_name,
                         e.target.value
                       )
                     }
-                    style={{ marginRight: 10, flex: 1, border: "none" }}
+                    style={{ width: "100%", border: "none" }}
                   />
-                  {params.value && (
-                    <div onMouseLeave={handlePopoverClose}>
-                      <img
-                        src={params.value as string}
-                        alt="Preview"
-                        style={{
-                          width: "50px",
-                          height: "auto",
-                          cursor: "pointer",
-                        }}
-                        onMouseEnter={handlePopoverOpen}
-                      />
-                      <Popover
-                        open={popoverId === params.id}
-                        anchorEl={anchorEl}
-                        onClose={handlePopoverClose}
-                        anchorOrigin={{
-                          vertical: "top",
-                          horizontal: "right",
-                        }}
-                        transformOrigin={{
-                          vertical: "center",
-                          horizontal: "center",
-                        }}
-                        slotProps={{
-                          paper: {
-                            onMouseLeave: handlePopoverClose,
-                          },
-                        }}
-                      >
-                        <img
-                          src={params.value as string}
-                          alt="Large Preview"
-                          style={{
-                            width: "300px",
-                            height: "auto",
-                            display: "block",
-                          }}
-                        />
-                      </Popover>
-                    </div>
-                  )}
-                </div>
-              );
-            } else if (["date", "date_start", "date_end"].includes(field)) {
-              return (
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DateTimePicker
-                    value={params.value ? new Date(params.value) : null} // Ensure value is a Date object or null
-                    onChange={(val) => {
-                      if (params.id === "NewRow") {
-                        setNewRowValues((prev) => ({
-                          ...prev,
-                          [table_name]: {
-                            ...prev[table_name],
-                            [field]: val?.toISOString() || "",
-                          },
-                        }));
-                      } else {
-                        handleFieldChange(
-                          table_name,
-                          Number(params.id),
-                          field,
-                          val?.toISOString() || ""
-                        );
-                      }
-                    }}
-                  />
-                </LocalizationProvider>
-              );
-            }
-
-            // Default rendering for other fields
-            return params.value;
-          },
-        }));
+                );
+              }
+            },
+          }));
 
         // Add custom actions column
         columns.push({
@@ -300,29 +345,27 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
         });
 
         return (
-          <div>
-            <div key={table_name + "_2"} style={{ marginTop: 50 }}>
-              <h2 className="h2">{display_name}</h2>
-              <div style={{ width: "100%", backgroundColor: "white" }}>
-                <DataGrid
-                  rows={rows || []}
-                  columns={columns}
-                  processRowUpdate={(newRow) => {
-                    const { id, ...fields } = newRow;
-                    if (id === "NewRow") {
-                      setNewRowValues((prev) => ({
-                        ...prev,
-                        [table_name]: fields,
-                      }));
-                    } else {
-                      for (const [field, value] of Object.entries(fields)) {
-                        handleFieldChange(table_name, Number(id), field, value);
-                      }
+          <div key={table_name} style={{ marginTop: 50 }}>
+            <h2>{display_name}</h2>
+            <div style={{ width: "100%", backgroundColor: "white" }}>
+              <DataGrid
+                rows={rows || []}
+                columns={columns}
+                processRowUpdate={(newRow) => {
+                  const { id, ...fields } = newRow;
+                  if (id === "NewRow") {
+                    setNewRowValues((prev) => ({
+                      ...prev,
+                      [table_name]: fields,
+                    }));
+                  } else {
+                    for (const [field, value] of Object.entries(fields)) {
+                      handleFieldChange(table_name, Number(id), field, value);
                     }
-                    return newRow;
-                  }}
-                />
-              </div>
+                  }
+                  return newRow;
+                }}
+              />
             </div>
           </div>
         );

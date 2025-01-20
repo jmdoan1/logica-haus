@@ -34,6 +34,23 @@ export async function fetchOrgTables(orgId: string): Promise<OrgTable[]> {
   return data as OrgTable[];
 }
 
+export async function fetchTableSchema(
+  tableName: string
+): Promise<{ column_name: string; data_type: string }[]> {
+  const { data, error } = await supabase.rpc("fetch_table_schema", {
+    name_of_table: tableName,
+  });
+
+  if (error) {
+    console.error(`Error fetching schema for table ${tableName}:`, error);
+    return [];
+  }
+
+  console.log({ schema: data });
+
+  return data as { column_name: string; data_type: string }[];
+}
+
 export async function fetchTableData(tableName: string): Promise<TableRow[]> {
   const { data, error } = await supabase.from(tableName).select("*");
 
