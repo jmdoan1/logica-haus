@@ -16,6 +16,9 @@ import {
   GridActionsCellItem,
 } from "@mui/x-data-grid";
 import { Popover } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DateTimePicker } from "@mui/x-date-pickers";
 
 type Props = {
   orgId: string;
@@ -233,6 +236,34 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
                     </div>
                   )}
                 </div>
+              );
+            } else if (["date", "date_start", "date_end"].includes(field)) {
+              // Render a date/time picker for "date" fields
+              console.log(`DATE: ${params.value as Date}`);
+              return (
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DateTimePicker
+                    value={params.value ? new Date(params.value) : null} // Ensure value is a Date object or null
+                    onChange={(val) => {
+                      if (params.id === "NewRow") {
+                        setNewRowValues((prev) => ({
+                          ...prev,
+                          [table_name]: {
+                            ...prev[table_name],
+                            [field]: val?.toISOString() || "",
+                          },
+                        }));
+                      } else {
+                        handleFieldChange(
+                          table_name,
+                          Number(params.id),
+                          field,
+                          val?.toISOString() || ""
+                        );
+                      }
+                    }}
+                  />
+                </LocalizationProvider>
               );
             }
 
