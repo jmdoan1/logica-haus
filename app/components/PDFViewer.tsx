@@ -6,7 +6,7 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
-export default function Page() {
+export default function PDFViewer({ pdf }: { pdf: string }) {
   const [numPages, setNumPages] = useState<number | null>(null);
 
   const onDocumentLoadSuccess = ({ numPages: total }: { numPages: number }) => {
@@ -21,10 +21,7 @@ export default function Page() {
         width: "100%",
       }}
     >
-      <Document
-        file="/assets/projects/homesight/Volunteer-Agreement.pdf" // Replace with your PDF path
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
+      <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.from({ length: numPages ?? 0 }).map((_, i) => (
           <PdfPage key={i} pageNumber={i + 1} />
         ))}
