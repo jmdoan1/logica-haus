@@ -8,7 +8,12 @@ export default function Page() {
   return (
     <section>
       <div
-        style={{ width: "100%", display: "flex", flexDirection: "row-reverse" }}
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row-reverse",
+          paddingRight: 70,
+        }}
       >
         <div
           style={{

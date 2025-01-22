@@ -41,6 +41,30 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
   const [popoverId, setPopoverId] = useState<GridRowId>();
 
   useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      // Check if there are unsaved changes or new rows
+      const hasUnsavedChanges = Object.values(modifiedRows).some(
+        (rows) => rows.size > 0
+      );
+
+      const hasNewRows = Object.values(newRowValues).some(
+        (newRow) => Object.keys(newRow).length > 0
+      );
+
+      if (hasUnsavedChanges || hasNewRows) {
+        event.preventDefault();
+        event.returnValue = ""; // This triggers the browser's default confirmation dialog
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [modifiedRows, newRowValues]);
+
+  useEffect(() => {
     if (orgId !== "") {
       const loadTables = async () => {
         const fetchedTables = await fetchOrgTables(orgId);
