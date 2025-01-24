@@ -370,7 +370,7 @@ const OrgTables: React.FC<Props> = ({ orgId }) => {
 
         return (
           <div key={table_name} style={{ marginTop: 50 }}>
-            <h2>{display_name}</h2>
+            <h2 className="h2">{display_name}</h2>
             <div style={{ width: "100%", backgroundColor: "white" }}>
               <DataGrid
                 rows={rows || []}
