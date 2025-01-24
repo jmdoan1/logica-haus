@@ -68,6 +68,7 @@ export default async function handler(
     // console.log({ contentResponse: contentResponse });
 
     if (contentResponse?.status && contentResponse.status >= 300) {
+      console.log({ contentResponse: contentResponse });
       throw new Error("Content not successfully set for the campaign.");
     }
 
@@ -77,6 +78,7 @@ export default async function handler(
     // console.log({ readyCheckResponse: readyCheckResponse });
 
     if (!readyCheckResponse.is_ready) {
+      console.log({ readyCheckResponse: readyCheckResponse });
       throw new Error(
         "Campaign content is not fully prepared. Please check content details."
       );
