@@ -31,13 +31,14 @@ export default async function handler(
     // Email content
     const mailOptions = {
       from: `"LogicaHaus" <${process.env.GMAIL_USER}>`,
-      to: ["jmdoan1@gmail.com", "jay@doan.works"],
+      to: ["kiana@homesightwa.org"],
+      bcc: ["jay@logica.haus"],
       subject: `New App Testimonial From ${name}`,
-      text: `A new testimonial was submitted:
+      text: `A new testimonial has been submitted:
       - Name: ${name}
       - Email: ${email}
       - Testimony: ${testimony}`,
-      html: `<p>A new testimonial was submitted:</p>
+      html: `<p>A new testimonial has been submitted:</p>
       <ul>
         <li><strong>Name:</strong> ${name}</li>
         <li><strong>Email:</strong> ${email}</li>
